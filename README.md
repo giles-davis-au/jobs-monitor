@@ -19,8 +19,9 @@ python3.13 -m venv .venv
 - `companies.yml` — the list of companies to monitor and how to fetch each one.
 - `keywords.yml` — your list of match phrases (full-phrase substring match
   against job titles, case-insensitive).
-- SMTP credentials for the email digest are read from environment variables
-  (see `.env.example`) — never committed to git.
+- Email is sent via [Resend](https://resend.com)'s API — sign up (free tier),
+  create an API key, and set it in `.env` (see `.env.example`, never
+  committed to git).
 
 ## Running
 

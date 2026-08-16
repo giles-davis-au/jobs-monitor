@@ -2,11 +2,11 @@ from unittest.mock import patch
 
 from jobsmonitor.connectors.base import ConnectorError
 from jobsmonitor.models import Job
-from jobsmonitor.notifier import SmtpConfig
+from jobsmonitor.notifier import EmailConfig
 from jobsmonitor.runner import run
 from jobsmonitor.store import Store
 
-CONFIG = SmtpConfig(host="x", port=587, username="x", password="x", to_addr="x")
+CONFIG = EmailConfig(api_key="x", from_addr="x", to_addr="x")
 
 
 class FakeConnector:
@@ -28,7 +28,7 @@ def test_failed_connector_is_recorded_as_error_and_alerted_not_silently_empty(tm
     with patch("jobsmonitor.runner.send_degraded_alert") as alert, patch(
         "jobsmonitor.runner.send_digest"
     ) as digest:
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     # the failure must be loud: a distinct alert, and NOT folded into the digest
     alert.assert_called_once_with(CONFIG, "Broken Co", "error", "site returned 500")
@@ -47,7 +47,7 @@ def test_connector_returning_zero_after_previously_healthy_is_flagged_degraded(t
     connectors = [FakeConnector("Flaky Co", jobs=[])]  # now returns nothing
 
     with patch("jobsmonitor.runner.send_degraded_alert") as alert:
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     alert.assert_called_once()
     assert store.recent_runs("Flaky Co")[0]["status"] == "degraded"
@@ -59,7 +59,7 @@ def test_connector_genuinely_having_zero_jobs_first_time_is_ok_not_degraded(tmp_
     connectors = [FakeConnector("New Co", jobs=[])]
 
     with patch("jobsmonitor.runner.send_degraded_alert") as alert:
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     alert.assert_not_called()
     assert store.recent_runs("New Co")[0]["status"] == "ok"
@@ -77,7 +77,7 @@ def test_one_broken_connector_does_not_block_others_or_their_matches(tmp_path):
     with patch("jobsmonitor.runner.send_degraded_alert"), patch(
         "jobsmonitor.runner.send_digest"
     ) as digest:
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     assert store.recent_runs("Healthy Co")[0]["status"] == "ok"
     assert store.recent_runs("Healthy Co")[0]["new_matches"] == 1
@@ -93,8 +93,8 @@ def test_dedup_prevents_renotifying_same_job_across_runs(tmp_path):
     connectors = [FakeConnector("Co", jobs=[job])]
 
     with patch("jobsmonitor.runner.send_digest") as digest:
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
-        run(store, connectors, keywords=["Program Manager"], smtp_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     assert digest.call_count == 1  # only the first run had a new match
     store.close()

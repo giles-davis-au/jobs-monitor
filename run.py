@@ -8,7 +8,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from jobsmonitor.config import load_companies, load_keywords
-from jobsmonitor.notifier import SmtpConfig
+from jobsmonitor.notifier import EmailConfig
 from jobsmonitor.runner import run
 from jobsmonitor.store import Store
 
@@ -54,8 +54,8 @@ def main() -> int:
         setup_logging()
         connectors = load_companies(COMPANIES_PATH)
         keywords = load_keywords(KEYWORDS_PATH)
-        smtp_config = SmtpConfig.from_env()
-        run(store, connectors, keywords, smtp_config)
+        email_config = EmailConfig.from_env()
+        run(store, connectors, keywords, email_config)
         return 0
     finally:
         store.close()
