@@ -6,6 +6,8 @@ __pycache__/
 # local runtime state — not shared, contains your run history
 jobsmonitor.db
 *.log
+launchd/stdout.log
+launchd/stderr.log
 
 # secrets — never commit these
 .env

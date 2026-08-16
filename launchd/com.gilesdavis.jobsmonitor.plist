@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.gilesdavis.jobsmonitor</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor/.venv/bin/python</string>
+        <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor/run.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor</string>
+
+    <!-- Every 5 hours (within the agreed 4-6h window). launchd will also
+         catch up a missed run shortly after the Mac wakes/logs back in,
+         which plain cron does not do reliably. -->
+    <key>StartInterval</key>
+    <integer>18000</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor/launchd/stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor/launchd/stderr.log</string>
+</dict>
+</plist>

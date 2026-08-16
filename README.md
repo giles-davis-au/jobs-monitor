@@ -31,5 +31,28 @@ python3.13 -m venv .venv
 
 ## Scheduling
 
-Runs on macOS via `launchd` every 4-6 hours — see `launchd/` for the
-LaunchAgent plist and install instructions.
+Runs on macOS via `launchd` every 5 hours (within the agreed 4-6h window).
+`launchd/com.gilesdavis.jobsmonitor.plist` is ready to install — nothing is
+installed automatically, run this yourself when you're ready:
+
+```bash
+cp launchd/com.gilesdavis.jobsmonitor.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
+```
+
+Check it's loaded:
+
+```bash
+launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | head -20
+```
+
+To stop/uninstall:
+
+```bash
+launchctl bootout gui/$(id -u)/com.gilesdavis.jobsmonitor
+rm ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
+```
+
+launchd's own stdout/stderr for the process go to `launchd/stdout.log` and
+`launchd/stderr.log` (catches startup failures before app logging kicks in);
+day-to-day run logging goes to `jobsmonitor.log`.

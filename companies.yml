@@ -1,0 +1,52 @@
+# Companies to monitor. Add a new one by adding an entry here — no code
+# changes needed for greenhouse / lever / ashby / workable / employmenthero /
+# attrax companies (see docs/PLAN.md §2-3 for how each connector type works
+# and how to find the right config values for a new company on that platform).
+#
+# Canva is deliberately not here yet — its careers site sits behind
+# Cloudflare's bot challenge and needs a headless-browser connector
+# (docs/PLAN.md Phase 8, fast-follow).
+
+- name: Block
+  connector: greenhouse
+  config:
+    board_token: block
+
+- name: Deputy
+  connector: lever
+  config:
+    slug: deputy
+
+- name: Dovetail
+  connector: ashby
+  config:
+    board: dovetail
+
+- name: SafetyCulture
+  connector: ashby
+  config:
+    board: safetyculture
+
+- name: Rokt
+  connector: workable
+  config:
+    account_id: "157387"
+
+- name: Atlassian
+  connector: atlassian
+  config: {}
+
+- name: Employment Hero
+  connector: employmenthero
+  config:
+    org_id: 3cfd1633-4920-488d-be7e-985df4acfd1b
+
+- name: Wise
+  connector: attrax
+  config:
+    base_url: https://wise.jobs
+    filter_query: "options=292"  # Wise's own Sydney filter — copy from their UI if it ever changes
+
+- name: Airwallex
+  connector: airwallex
+  config: {}

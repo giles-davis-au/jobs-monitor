@@ -1,0 +1,6 @@
+# Full-phrase, case-insensitive substring match against job titles.
+# Each entry must appear in full inside a title to count — "Program Manager"
+# matches "Senior Program Manager, Platform" but NOT "Engineering Manager".
+- "Program Manager"
+- "Programme Manager"
+- "Senior Project Manager"
