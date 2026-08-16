@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local runtime state — not shared, contains your run history
+jobsmonitor.db
+*.log
+
+# secrets — never commit these
+.env
+secrets.yml
+
+# local Claude Code permission settings — machine-specific
+.claude/settings.local.json
