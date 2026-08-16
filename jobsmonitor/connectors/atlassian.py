@@ -40,8 +40,20 @@ class AtlassianConnector:
                     company=self.company,
                     job_id=str(j["id"]),
                     title=j.get("title", ""),
-                    url=j.get("applyUrl", ""),
+                    url=self._advert_url(j),
                     location=location_text,
                 )
             )
         return result
+
+    def _advert_url(self, j: dict) -> str:
+        """`applyUrl` drops the visitor straight into the application flow
+        (`?mode=apply`) rather than the job advert. `portalJobPost.portalUrl`
+        is the same iCIMS URL without that param — use it when present, and
+        fall back to stripping `?mode=apply` off `applyUrl` otherwise.
+        """
+        portal_url = (j.get("portalJobPost") or {}).get("portalUrl")
+        if portal_url:
+            return portal_url
+        apply_url = j.get("applyUrl", "")
+        return apply_url.split("?mode=apply")[0] if apply_url else ""

@@ -110,6 +110,26 @@ def test_atlassian_parses_fixture(mock_get):
 
     assert len(jobs) == len(fixture)
     assert any("sydney" in j.location.lower() for j in jobs)
+    # url must be the advert page, not the apply-flow URL
+    assert all("mode=apply" not in j.url for j in jobs)
+    assert all(j.url.endswith("/job") for j in jobs)
+
+
+def test_atlassian_falls_back_to_stripped_apply_url_when_portal_missing(mock_get):
+    fixture = [
+        {
+            "id": 1,
+            "title": "Engineer",
+            "locations": ["Sydney - Australia"],
+            "applyUrl": "https://example.icims.com/jobs/1/engineer/job?mode=apply",
+            # no portalJobPost key at all
+        }
+    ]
+    mock_get.returns(httpx.Response(200, json=fixture))
+
+    jobs = AtlassianConnector().fetch()
+
+    assert jobs[0].url == "https://example.icims.com/jobs/1/engineer/job"
 
 
 def test_employmenthero_paginates_fixture(mock_get):
