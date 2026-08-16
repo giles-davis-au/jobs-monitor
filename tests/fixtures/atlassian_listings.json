@@ -1,0 +1,107 @@
+[
+  {
+    "portalJobPost": {
+      "portalId": 242,
+      "portalUrl": "https://careers-apac-atlassian.icims.com/jobs/25720/account-executive%2c-mid-market-%28mandarin-speaking%29/job",
+      "id": 25720,
+      "updatedDate": "2026-08-10 08:41 AM"
+    },
+    "id": 25720,
+    "portalId": 242,
+    "title": "Account Executive, Mid-Market (Mandarin speaking)",
+    "locations": [
+      "Sydney - Australia -   Sydney,  2000 Australia",
+      "Remote - Remote"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://careers-apac-atlassian.icims.com/jobs/25720/account-executive%2c-mid-market-%28mandarin-speaking%29/job?mode=apply"
+  },
+  {
+    "portalJobPost": {
+      "portalId": 242,
+      "portalUrl": "https://careers-apac-atlassian.icims.com/jobs/25173/account-executive%2c-mid-market%2c-anz/job",
+      "id": 25173,
+      "updatedDate": "2026-08-05 01:59 AM"
+    },
+    "id": 25173,
+    "portalId": 242,
+    "title": "Account Executive, Mid-Market, ANZ",
+    "locations": [
+      "Sydney - Australia -   Sydney,  2000 Australia",
+      "Melbourne - Australia -   Melbourne,  3000 Australia",
+      "Brisbane - Australia -   Brisbane,   Australia"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://careers-apac-atlassian.icims.com/jobs/25173/account-executive%2c-mid-market%2c-anz/job?mode=apply"
+  },
+  {
+    "portalJobPost": {
+      "portalId": 242,
+      "portalUrl": "https://careers-apac-atlassian.icims.com/jobs/25719/customer-program-manager-%7c-dx/job",
+      "id": 25719,
+      "updatedDate": "2026-08-13 01:56 AM"
+    },
+    "id": 25719,
+    "portalId": 242,
+    "title": "Customer Program Manager | DX",
+    "locations": [
+      "Remote - APAC - Remote",
+      "Sydney - Australia -   Sydney,  2000 Australia"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://careers-apac-atlassian.icims.com/jobs/25719/customer-program-manager-%7c-dx/job?mode=apply"
+  },
+  {
+    "portalJobPost": {
+      "portalId": 17,
+      "portalUrl": "https://globalcareers-atlassian.icims.com/jobs/25583/account-executive---japanese-speaking/job",
+      "id": 25583,
+      "updatedDate": "2026-08-06 11:37 PM"
+    },
+    "id": 25583,
+    "portalId": 17,
+    "title": "Account Executive - Japanese Speaking",
+    "locations": [
+      "Remote - Japan - Remote",
+      "Remote - Remote"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://globalcareers-atlassian.icims.com/jobs/25583/account-executive---japanese-speaking/job?mode=apply"
+  },
+  {
+    "portalJobPost": {
+      "portalId": 242,
+      "portalUrl": "https://careers-apac-atlassian.icims.com/jobs/25019/account-executive%2c-enterprise/job",
+      "id": 25019,
+      "updatedDate": "2026-07-30 06:22 AM"
+    },
+    "id": 25019,
+    "portalId": 242,
+    "title": "Account Executive, Enterprise",
+    "type": "Full-Time",
+    "locations": [
+      "Singapore - Singapore -   Central Singapore  Singapore",
+      "Remote - Remote"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://careers-apac-atlassian.icims.com/jobs/25019/account-executive%2c-enterprise/job?mode=apply"
+  },
+  {
+    "portalJobPost": {
+      "portalId": 242,
+      "portalUrl": "https://careers-apac-atlassian.icims.com/jobs/25020/account-executive%2c-enterprise/job",
+      "id": 25020,
+      "updatedDate": "2026-06-26 03:42 PM"
+    },
+    "id": 25020,
+    "portalId": 242,
+    "title": "Account Executive, Enterprise",
+    "type": "Full-Time",
+    "locations": [
+      "Bengaluru - India -   Bengaluru,  560071 India",
+      "Remote - Remote"
+    ],
+    "category": "Sales",
+    "applyUrl": "https://careers-apac-atlassian.icims.com/jobs/25020/account-executive%2c-enterprise/job?mode=apply"
+  }
+]

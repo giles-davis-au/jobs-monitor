@@ -1,0 +1,124 @@
+{
+  "jobs": [
+    {
+      "id": "bd3f32c9-f554-4be3-94c1-4fc4f8f3e147",
+      "title": "Corporate Counsel",
+      "department": "Operations",
+      "team": "Finance",
+      "employmentType": "FullTime",
+      "location": "Kansas City",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-30T21:48:04.002+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {}
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/bd3f32c9-f554-4be3-94c1-4fc4f8f3e147",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/bd3f32c9-f554-4be3-94c1-4fc4f8f3e147/application"
+    },
+    {
+      "id": "7657a8b6-1476-40aa-947b-5246bebe63d0",
+      "title": "Software Engineer II - Integrations",
+      "department": "Engineering",
+      "team": "Engineering",
+      "employmentType": "FullTime",
+      "location": "Sydney",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-31T06:01:08.451+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {
+          "postalCode": "2010",
+          "addressRegion": "NSW",
+          "streetAddress": "72 Foveaux Street Surry Hills ",
+          "addressCountry": "Australia",
+          "addressLocality": "Sydney"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/7657a8b6-1476-40aa-947b-5246bebe63d0",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/7657a8b6-1476-40aa-947b-5246bebe63d0/application"
+    },
+    {
+      "id": "b7600143-d383-4c0a-bbfe-93f886c77ef1",
+      "title": "Account Executive",
+      "department": "GTM",
+      "team": "Sales",
+      "employmentType": "FullTime",
+      "location": "Sydney",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-29T19:49:04.963+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {
+          "postalCode": "2010",
+          "addressRegion": "NSW",
+          "streetAddress": "72 Foveaux Street Surry Hills ",
+          "addressCountry": "Australia",
+          "addressLocality": "Sydney"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/b7600143-d383-4c0a-bbfe-93f886c77ef1",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/b7600143-d383-4c0a-bbfe-93f886c77ef1/application"
+    },
+    {
+      "id": "a7db9971-7b45-410f-801d-24c1e3037c00",
+      "title": "Sales Manager",
+      "department": "GTM",
+      "team": "Sales",
+      "employmentType": "FullTime",
+      "location": "Austin",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-30T21:56:09.639+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {}
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/a7db9971-7b45-410f-801d-24c1e3037c00",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/a7db9971-7b45-410f-801d-24c1e3037c00/application"
+    },
+    {
+      "id": "2e031fdc-e81b-4243-8217-4825772a69f1",
+      "title": "Expansion Account Executive",
+      "department": "GTM",
+      "team": "Sales",
+      "employmentType": "FullTime",
+      "location": "Austin",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-30T22:06:30.437+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {}
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/2e031fdc-e81b-4243-8217-4825772a69f1",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/2e031fdc-e81b-4243-8217-4825772a69f1/application"
+    },
+    {
+      "id": "dcdfed8d-6482-4e96-b3c2-ebe0a9179654",
+      "title": "Account Executive",
+      "department": "GTM",
+      "team": "Sales",
+      "employmentType": "FullTime",
+      "location": "Manchester",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-29T22:15:40.892+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {}
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/safetyculture/dcdfed8d-6482-4e96-b3c2-ebe0a9179654",
+      "applyUrl": "https://jobs.ashbyhq.com/safetyculture/dcdfed8d-6482-4e96-b3c2-ebe0a9179654/application"
+    }
+  ]
+}

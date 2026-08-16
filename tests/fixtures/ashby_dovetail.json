@@ -1,0 +1,68 @@
+{
+  "jobs": [
+    {
+      "id": "a63ec0ac-b226-497c-aee4-e5d67ec31636",
+      "title": "Senior Platform Engineer",
+      "department": "Engineering",
+      "team": "Engineering",
+      "employmentType": "FullTime",
+      "location": "Sydney",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-22T04:30:02.553+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {
+          "addressRegion": "NSW",
+          "addressCountry": "Australia",
+          "addressLocality": "Sydney"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/dovetail/a63ec0ac-b226-497c-aee4-e5d67ec31636",
+      "applyUrl": "https://jobs.ashbyhq.com/dovetail/a63ec0ac-b226-497c-aee4-e5d67ec31636/application"
+    },
+    {
+      "id": "f963c62b-100d-47df-b5aa-954464065bb2",
+      "title": "Account Executive (Mid-market)",
+      "department": "Sales & Customer Success",
+      "team": "Sales & Customer Success",
+      "employmentType": "FullTime",
+      "location": "US Remote",
+      "secondaryLocations": [],
+      "publishedAt": "2026-05-29T02:07:41.085+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "address": {
+        "postalAddress": {
+          "addressCountry": "United States"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/dovetail/f963c62b-100d-47df-b5aa-954464065bb2",
+      "applyUrl": "https://jobs.ashbyhq.com/dovetail/f963c62b-100d-47df-b5aa-954464065bb2/application"
+    },
+    {
+      "id": "00198431-f2dd-4e36-8916-729f4e569014",
+      "title": "Staff Software Engineer",
+      "department": "Engineering",
+      "team": "Engineering",
+      "employmentType": "FullTime",
+      "location": "Sydney",
+      "secondaryLocations": [],
+      "publishedAt": "2026-07-01T02:25:40.765+00:00",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "address": {
+        "postalAddress": {
+          "addressRegion": "NSW",
+          "addressCountry": "Australia",
+          "addressLocality": "Sydney"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/dovetail/00198431-f2dd-4e36-8916-729f4e569014",
+      "applyUrl": "https://jobs.ashbyhq.com/dovetail/00198431-f2dd-4e36-8916-729f4e569014/application"
+    }
+  ]
+}

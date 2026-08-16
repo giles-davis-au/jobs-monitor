@@ -1,0 +1,100 @@
+{
+  "jobs": [
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5317296008?gh_jid=5317296008",
+      "education": "education_optional",
+      "internal_job_id": 4490613008,
+      "location": {
+        "name": "Sydney, Australia"
+      },
+      "id": 5317296008,
+      "updated_at": "2026-08-05T14:13:40-04:00",
+      "requisition_id": "R0006668",
+      "title": "Account Manager, SMB",
+      "company_name": "Block",
+      "first_published": "2026-07-09T14:36:51-04:00",
+      "language": "en",
+      "application_deadline": null
+    },
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5366536008?gh_jid=5366536008",
+      "education": "education_optional",
+      "internal_job_id": 4461872008,
+      "location": {
+        "name": "Sydney, Australia"
+      },
+      "id": 5366536008,
+      "updated_at": "2026-08-05T14:43:18-04:00",
+      "requisition_id": "R0006359",
+      "title": "Business Development Rep",
+      "company_name": "Block",
+      "first_published": "2026-07-21T20:26:15-04:00",
+      "language": "en",
+      "application_deadline": null
+    },
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5235711008?gh_jid=5235711008",
+      "education": "education_optional",
+      "internal_job_id": 4457379008,
+      "location": {
+        "name": "Sydney, Australia"
+      },
+      "id": 5235711008,
+      "updated_at": "2026-08-05T14:41:41-04:00",
+      "requisition_id": "R0006248",
+      "title": "Enterprise Account Executive, Australia",
+      "company_name": "Block",
+      "first_published": "2026-05-29T12:07:18-04:00",
+      "language": "en",
+      "application_deadline": null
+    },
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5258372008?gh_jid=5258372008",
+      "education": "education_optional",
+      "internal_job_id": 4490613008,
+      "location": {
+        "name": "Melbourne, Australia"
+      },
+      "id": 5258372008,
+      "updated_at": "2026-08-05T14:13:40-04:00",
+      "requisition_id": "R0006668",
+      "title": "Account Manager, SMB ",
+      "company_name": "Block",
+      "first_published": "2026-06-15T22:12:45-04:00",
+      "language": "en",
+      "application_deadline": null
+    },
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5317297008?gh_jid=5317297008",
+      "education": "education_optional",
+      "internal_job_id": 4490613008,
+      "location": {
+        "name": "Brisbane, Australia"
+      },
+      "id": 5317297008,
+      "updated_at": "2026-08-05T14:13:40-04:00",
+      "requisition_id": "R0006668",
+      "title": "Account Manager, SMB ",
+      "company_name": "Block",
+      "first_published": "2026-07-09T14:37:35-04:00",
+      "language": "en",
+      "application_deadline": null
+    },
+    {
+      "absolute_url": "http://block.xyz/careers/jobs/5367290008?gh_jid=5367290008",
+      "education": "education_optional",
+      "internal_job_id": 4521082008,
+      "location": {
+        "name": "Bay Area, CA, United States of America"
+      },
+      "id": 5367290008,
+      "updated_at": "2026-08-03T14:30:09-04:00",
+      "requisition_id": "R0006821",
+      "title": "AI Legal Program Manager ",
+      "company_name": "Block",
+      "first_published": "2026-07-28T12:22:59-04:00",
+      "language": "en",
+      "application_deadline": null
+    }
+  ]
+}

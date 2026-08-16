@@ -1,0 +1,58 @@
+[
+  {
+    "categories": {
+      "commitment": "Full Time",
+      "department": "Sales",
+      "location": "Sydney",
+      "team": "Account Management",
+      "allLocations": [
+        "Sydney",
+        "Melbourne"
+      ]
+    },
+    "createdAt": 1783396802647,
+    "id": "ed279491-acff-4d4b-89a0-7a2e91b22803",
+    "text": "Account Manager",
+    "country": "AU",
+    "workplaceType": "hybrid",
+    "hostedUrl": "https://jobs.lever.co/deputy/ed279491-acff-4d4b-89a0-7a2e91b22803",
+    "applyUrl": "https://jobs.lever.co/deputy/ed279491-acff-4d4b-89a0-7a2e91b22803/apply"
+  },
+  {
+    "categories": {
+      "commitment": "Full Time",
+      "department": "Marketing",
+      "location": "Sydney",
+      "team": "Demand Generation & Growth",
+      "allLocations": [
+        "Sydney",
+        "Melbourne"
+      ]
+    },
+    "createdAt": 1780458871862,
+    "id": "28d20743-af7f-4005-a6f0-2b1805a46d5b",
+    "text": "Lead Marketing Operations Manager",
+    "country": "AU",
+    "workplaceType": "hybrid",
+    "hostedUrl": "https://jobs.lever.co/deputy/28d20743-af7f-4005-a6f0-2b1805a46d5b",
+    "applyUrl": "https://jobs.lever.co/deputy/28d20743-af7f-4005-a6f0-2b1805a46d5b/apply"
+  },
+  {
+    "categories": {
+      "commitment": "Full Time",
+      "department": "Design, Engineering, Product Management",
+      "location": "London",
+      "team": "Delivery Services",
+      "allLocations": [
+        "London"
+      ]
+    },
+    "createdAt": 1786404362740,
+    "id": "e384217c-4af7-4807-8a3b-b8f8369453c0",
+    "text": "Lead Payroll Implementation Consultant",
+    "country": "GB",
+    "workplaceType": "hybrid",
+    "hostedUrl": "https://jobs.lever.co/deputy/e384217c-4af7-4807-8a3b-b8f8369453c0",
+    "applyUrl": "https://jobs.lever.co/deputy/e384217c-4af7-4807-8a3b-b8f8369453c0/apply"
+  }
+]
