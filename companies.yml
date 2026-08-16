@@ -2,10 +2,6 @@
 # changes needed for greenhouse / lever / ashby / workable / employmenthero /
 # attrax companies (see docs/PLAN.md §2-3 for how each connector type works
 # and how to find the right config values for a new company on that platform).
-#
-# Canva is deliberately not here yet — its careers site sits behind
-# Cloudflare's bot challenge and needs a headless-browser connector
-# (docs/PLAN.md Phase 8, fast-follow).
 
 - name: Block
   connector: greenhouse
@@ -49,4 +45,8 @@
 
 - name: Airwallex
   connector: airwallex
+  config: {}
+
+- name: Canva
+  connector: canva
   config: {}

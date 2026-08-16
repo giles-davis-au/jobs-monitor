@@ -7,6 +7,7 @@ from jobsmonitor.connectors.ashby import AshbyConnector
 from jobsmonitor.connectors.atlassian import AtlassianConnector
 from jobsmonitor.connectors.attrax import AttraxConnector
 from jobsmonitor.connectors.base import Connector
+from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.lever import LeverConnector
@@ -21,6 +22,7 @@ CONNECTOR_REGISTRY = {
     "employmenthero": EmploymentHeroConnector,
     "attrax": AttraxConnector,
     "airwallex": AirwallexConnector,
+    "canva": CanvaConnector,
 }
 
 
