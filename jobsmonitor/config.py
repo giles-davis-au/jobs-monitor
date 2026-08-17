@@ -9,9 +9,12 @@ from jobsmonitor.connectors.attrax import AttraxConnector
 from jobsmonitor.connectors.base import Connector
 from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
+from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.lever import LeverConnector
+from jobsmonitor.connectors.teamtailor import TeamtailorConnector
 from jobsmonitor.connectors.workable import WorkableConnector
+from jobsmonitor.connectors.workday import WorkdayConnector
 
 CONNECTOR_REGISTRY = {
     "greenhouse": GreenhouseConnector,
@@ -23,6 +26,9 @@ CONNECTOR_REGISTRY = {
     "attrax": AttraxConnector,
     "airwallex": AirwallexConnector,
     "canva": CanvaConnector,
+    "workday": WorkdayConnector,
+    "teamtailor": TeamtailorConnector,
+    "employmenthero_marketplace": EmploymentHeroMarketplaceConnector,
 }
 
 

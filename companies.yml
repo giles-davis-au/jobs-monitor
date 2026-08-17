@@ -50,3 +50,60 @@
 - name: Canva
   connector: canva
   config: {}
+
+- name: Culture Amp
+  connector: greenhouse
+  config:
+    board_token: cultureamp
+
+- name: Quantium
+  connector: greenhouse
+  config:
+    board_token: quantium
+
+- name: Stripe
+  connector: greenhouse
+  config:
+    board_token: stripe
+
+- name: hipages
+  connector: greenhouse
+  config:
+    board_token: hipagesgroup
+
+- name: Immutable
+  connector: lever
+  config:
+    slug: immutable
+
+- name: Kasada
+  connector: lever
+  config:
+    slug: kasada
+
+- name: Constantinople
+  connector: lever
+  config:
+    slug: cxnpl
+
+- name: UpGuard
+  connector: ashby
+  config:
+    board: upguard
+
+- name: LexisNexis
+  connector: workday
+  config:
+    tenant: relx
+    wd_host: wd3
+    site: LexisNexisLegal
+
+- name: Tyro
+  connector: teamtailor
+  config:
+    base_url: https://careers.tyro.com
+
+- name: Smokeball
+  connector: employmenthero_marketplace
+  config:
+    org_slug: smokeball-australia-8gtiq

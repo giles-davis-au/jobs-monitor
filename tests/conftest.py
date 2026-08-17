@@ -48,3 +48,33 @@ def mock_get(monkeypatch):
     mock = MockGet()
     monkeypatch.setattr(httpx.Client, "get", mock)
     return mock
+
+
+@pytest.fixture
+def mock_post(monkeypatch):
+    """Same as `mock_get` but for httpx.Client.post (e.g. Workday's search API)."""
+
+    class MockPost:
+        def __init__(self):
+            self.queue = []
+            self.calls = []
+
+        def returns(self, response: httpx.Response):
+            self.queue.append(("response", response))
+            return self
+
+        def raises(self, exc: Exception):
+            self.queue.append(("raise", exc))
+            return self
+
+        def __call__(self, url, *args, **kwargs):
+            self.calls.append((url, kwargs.get("json")))
+            kind, value = self.queue.pop(0) if self.queue else ("raise", RuntimeError("no mock response queued"))
+            if kind == "raise":
+                raise value
+            value.request = httpx.Request("POST", url)
+            return value
+
+    mock = MockPost()
+    monkeypatch.setattr(httpx.Client, "post", mock)
+    return mock
