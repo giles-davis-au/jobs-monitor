@@ -132,3 +132,7 @@
 - name: Zip
   connector: zip
   config: {}
+
+- name: TikTok
+  connector: tiktok
+  config: {}

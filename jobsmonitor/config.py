@@ -14,6 +14,7 @@ from jobsmonitor.connectors.eightfold import EightfoldConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.lever import LeverConnector
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
+from jobsmonitor.connectors.tiktok import TikTokConnector
 from jobsmonitor.connectors.uber import UberConnector
 from jobsmonitor.connectors.workable import WorkableConnector
 from jobsmonitor.connectors.workday import WorkdayConnector
@@ -35,6 +36,7 @@ CONNECTOR_REGISTRY = {
     "uber": UberConnector,
     "eightfold": EightfoldConnector,
     "zip": ZipConnector,
+    "tiktok": TikTokConnector,
 }
 
 
