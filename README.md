@@ -81,9 +81,11 @@ touches row 1.
 
 ## Scheduling
 
-Runs on macOS via `launchd` every 5 hours (within the agreed 4-6h window).
-`launchd/com.gilesdavis.jobsmonitor.plist` is ready to install — nothing is
-installed automatically, run this yourself when you're ready:
+Runs on macOS via `launchd` every 3 hours, counted from whenever the job is
+(re)installed — not anchored to fixed clock times — plus once immediately at
+install, via `RunAtLoad`. `launchd/com.gilesdavis.jobsmonitor.plist` is ready
+to install — nothing is installed automatically, run this yourself when
+you're ready:
 
 ```bash
 cp launchd/com.gilesdavis.jobsmonitor.plist ~/Library/LaunchAgents/

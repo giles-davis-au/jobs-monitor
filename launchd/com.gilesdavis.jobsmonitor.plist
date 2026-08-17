@@ -14,11 +14,12 @@
     <key>WorkingDirectory</key>
     <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor</string>
 
-    <!-- Every 5 hours (within the agreed 4-6h window). launchd will also
-         catch up a missed run shortly after the Mac wakes/logs back in,
-         which plain cron does not do reliably. -->
+    <!-- Every 3 hours, counted from whenever this job is (re)installed —
+         not anchored to fixed clock times. launchd will also catch up a
+         missed run shortly after the Mac wakes/logs back in, which plain
+         cron does not do reliably. -->
     <key>StartInterval</key>
-    <integer>18000</integer>
+    <integer>10800</integer>
 
     <key>RunAtLoad</key>
     <true/>
