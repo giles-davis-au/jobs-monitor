@@ -75,36 +75,50 @@ touches row 1.
 ## Running
 
 ```bash
-.venv/bin/python run.py            # one fetch-and-notify cycle
-.venv/bin/python run.py --status   # print recent run history per company
+.venv/bin/python run.py   # one fetch-and-notify cycle, run manually
 ```
+
+For unattended ongoing runs (no Claude Code needed) see **Scheduling** below,
+which also covers checking status and stopping it.
 
 ## Scheduling
 
 Runs on macOS via `launchd` every 3 hours, counted from whenever the job is
 (re)installed — not anchored to fixed clock times — plus once immediately at
-install, via `RunAtLoad`. `launchd/com.gilesdavis.jobsmonitor.plist` is ready
-to install — nothing is installed automatically, run this yourself when
-you're ready:
+install, via `RunAtLoad`. Nothing is installed automatically; the three
+sections below are the full lifecycle.
+
+### Install and run
 
 ```bash
+cd /Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor
 cp launchd/com.gilesdavis.jobsmonitor.plist ~/Library/LaunchAgents/
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
 ```
 
-Check it's loaded:
+The `cd` matters — the `cp` command uses a path relative to the project
+folder. Once installed, it fires immediately (`RunAtLoad`), then every 3
+hours after that, indefinitely, with no Claude Code session needed.
+
+### Check status
 
 ```bash
-launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | head -20
+.venv/bin/python run.py --status                              # per-company run history — the useful one
+launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | head -20   # confirms launchd itself has it registered
 ```
 
-To stop/uninstall:
+Logs: day-to-day run logging goes to `jobsmonitor.log`; launchd's own
+stdout/stderr for the process go to `launchd/stdout.log` and
+`launchd/stderr.log` (catches startup failures before app logging even kicks
+in, e.g. a Python crash on import).
+
+### Stop it
 
 ```bash
 launchctl bootout gui/$(id -u)/com.gilesdavis.jobsmonitor
 rm ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
 ```
 
-launchd's own stdout/stderr for the process go to `launchd/stdout.log` and
-`launchd/stderr.log` (catches startup failures before app logging kicks in);
-day-to-day run logging goes to `jobsmonitor.log`.
+This only stops the schedule — `run.py` still works as a one-off afterwards
+(`.venv/bin/python run.py`), and reinstalling later is just the Install
+section again.
