@@ -2,96 +2,119 @@
 # changes needed for greenhouse / lever / ashby / workable / employmenthero /
 # attrax companies (see docs/PLAN.md §2-3 for how each connector type works
 # and how to find the right config values for a new company on that platform).
+#
+# `homepage` is the company's public marketing site (not its careers page) —
+# used for the "Company" hyperlink in the GSheet log, kept separate from
+# connector config since it's just metadata, not fetch behaviour.
 
 - name: Block
+  homepage: https://block.xyz
   connector: greenhouse
   config:
     board_token: block
 
 - name: Deputy
+  homepage: https://www.deputy.com
   connector: lever
   config:
     slug: deputy
 
 - name: Dovetail
+  homepage: https://dovetail.com
   connector: ashby
   config:
     board: dovetail
 
 - name: SafetyCulture
+  homepage: https://safetyculture.com
   connector: ashby
   config:
     board: safetyculture
 
 - name: Rokt
+  homepage: https://www.rokt.com
   connector: workable
   config:
     account_id: "157387"
 
 - name: Atlassian
+  homepage: https://www.atlassian.com
   connector: atlassian
   config: {}
 
 - name: Employment Hero
+  homepage: https://employmenthero.com
   connector: employmenthero
   config:
     org_id: 3cfd1633-4920-488d-be7e-985df4acfd1b
 
 - name: Wise
+  homepage: https://wise.com
   connector: attrax
   config:
     base_url: https://wise.jobs
     filter_query: "options=292"  # Wise's own Sydney filter — copy from their UI if it ever changes
 
 - name: Airwallex
+  homepage: https://www.airwallex.com
   connector: airwallex
   config: {}
 
 - name: Canva
+  homepage: https://www.canva.com
   connector: canva
   config: {}
 
 - name: Culture Amp
+  homepage: https://www.cultureamp.com
   connector: greenhouse
   config:
     board_token: cultureamp
 
 - name: Quantium
+  homepage: https://quantium.com
   connector: greenhouse
   config:
     board_token: quantium
 
 - name: Stripe
+  homepage: https://stripe.com
   connector: greenhouse
   config:
     board_token: stripe
 
 - name: hipages
+  homepage: https://hipagesgroup.com.au
   connector: greenhouse
   config:
     board_token: hipagesgroup
 
 - name: Immutable
+  homepage: https://www.immutable.com
   connector: lever
   config:
     slug: immutable
 
 - name: Kasada
+  homepage: https://www.kasada.io
   connector: lever
   config:
     slug: kasada
 
 - name: Constantinople
+  homepage: https://www.constantinople.co
   connector: lever
   config:
     slug: cxnpl
 
 - name: UpGuard
+  homepage: https://www.upguard.com
   connector: ashby
   config:
     board: upguard
 
 - name: LexisNexis
+  homepage: https://www.lexisnexis.com
   connector: workday
   config:
     tenant: relx
@@ -99,45 +122,54 @@
     site: LexisNexisLegal
 
 - name: Tyro
+  homepage: https://tyro.com
   connector: teamtailor
   config:
     base_url: https://careers.tyro.com
 
 - name: Smokeball
+  homepage: https://www.smokeball.com.au
   connector: employmenthero_marketplace
   config:
     org_slug: smokeball-australia-8gtiq
 
 - name: Uber
+  homepage: https://www.uber.com
   connector: uber
   config: {}
 
 - name: PayPal
+  homepage: https://www.paypal.com
   connector: eightfold
   config:
     api_url: https://paypal.eightfold.ai/api/pcsx/search
     domain: paypal.com
 
 - name: Domain
+  homepage: https://www.domain.com.au
   connector: eightfold
   config:
     api_url: https://careers.costargroup.com/api/apply/v2/jobs
     domain: costar.com
 
 - name: Adyen
+  homepage: https://www.adyen.com
   connector: greenhouse
   config:
     board_token: adyen
 
 - name: Zip
+  homepage: https://zip.co
   connector: zip
   config: {}
 
 - name: TikTok
+  homepage: https://www.tiktok.com
   connector: tiktok
   config: {}
 
 - name: Stake
+  homepage: https://hellostake.com
   connector: breezy
   config:
     breezy_company: stake

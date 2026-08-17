@@ -63,6 +63,16 @@ def load_companies(path: str | Path) -> list[Connector]:
     return connectors
 
 
+def load_company_homepages(path: str | Path) -> dict[str, str]:
+    """company name -> public homepage URL, for the GSheet log's Company
+    hyperlink. Entries with no `homepage` set are simply omitted.
+    """
+    with open(path) as f:
+        raw = yaml.safe_load(f) or []
+
+    return {entry["name"]: entry["homepage"] for entry in raw if entry.get("homepage")}
+
+
 def load_keywords(path: str | Path) -> list[str]:
     with open(path) as f:
         data = yaml.safe_load(f) or []
