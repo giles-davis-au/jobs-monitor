@@ -37,25 +37,36 @@ python3.13 -m venv .venv
 New matches are also appended to a Google Sheet if configured — a row per
 match with columns `# | Date Retrieved | Company | Job Title`, both Company
 and Job Title hyperlinked. This is off by default (nothing breaks without
-it); to enable it, one-time setup in [Google Cloud Console](https://console.cloud.google.com):
+it).
 
-1. Create a project (or use an existing one) and enable the **Google Sheets API**
-   for it (APIs & Services → Enable APIs and Services → search "Google
-   Sheets API" → Enable).
-2. Create a **service account** (IAM & Admin → Service Accounts → Create
-   Service Account) — this is a robot identity, not tied to your personal
-   Google login.
-3. On that service account, create a **JSON key** (Keys tab → Add Key →
-   Create new key → JSON) and download it. Save it somewhere outside the
-   repo, e.g. `~/.config/jobs-monitor/google-sheets-credentials.json` — it's
-   a credential, never commit it.
-4. Open your target Google Sheet, click **Share**, and share it with the
-   service account's email address (looks like
-   `something@your-project.iam.gserviceaccount.com`, shown on its detail
-   page) as **Editor**.
-5. In `.env`, set `GOOGLE_SHEETS_CREDENTIALS_FILE` to the path from step 3.
-   `GOOGLE_SHEET_ID` and `GOOGLE_SHEET_GID` are already pre-filled in
-   `.env.example` for your sheet.
+Deliberately **not** implemented via a Google Cloud service account —
+that requires a Cloud project + IAM setup for what's really just "let my
+own script write to my own sheet." Instead this uses a small
+**Apps Script Web App bound directly to the sheet**: no Google Cloud
+Console, no service account, no credential file to protect, just a URL +
+shared secret. One-time setup, entirely inside Google Sheets:
+
+1. Open your target sheet → **Extensions → Apps Script**.
+2. Delete the placeholder code and paste in the contents of
+   [`apps-script/Code.gs`](apps-script/Code.gs) from this repo.
+3. Replace `REPLACE_WITH_YOUR_OWN_SECRET` with a random string (e.g. run
+   `python3 -c "import secrets; print(secrets.token_hex(24))"`) — keep a
+   copy, it goes in `.env` too. `TARGET_GID` is already set to your sheet's
+   tab.
+4. **Deploy → New deployment** → click the gear icon next to "Select type" →
+   **Web app**.
+   - Execute as: **Me**
+   - Who has access: **Anyone** (this doesn't mean "publicly discoverable" —
+     the URL is an unguessable long ID, and the shared secret is checked
+     inside the script on every request; same trust model as any other
+     bearer-token webhook, e.g. the Resend API key)
+5. Click **Deploy**. The first time, Google shows an "unverified app"
+   warning — that's normal for a personal script authorizing itself to
+   edit your own sheet, not a real red flag; click **Advanced → Go to
+   (project name)** to proceed.
+6. Copy the **Web app URL** it gives you (`https://script.google.com/macros/s/.../exec`).
+7. In `.env`, set `GOOGLE_SHEETS_WEBHOOK_URL` to that URL and
+   `GOOGLE_SHEETS_WEBHOOK_SECRET` to the secret from step 3.
 
 The sheet needs its header row (`# | Date Retrieved | Company | Job Title`)
 already in place — the tool only ever appends after existing rows, it never

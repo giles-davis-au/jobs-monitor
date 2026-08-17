@@ -2,59 +2,42 @@ import os
 from dataclasses import dataclass
 from datetime import datetime
 
-import gspread
-from google.oauth2.service_account import Credentials
+import httpx
 
 from jobsmonitor.models import Job, LocationConfidence
-
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 
 @dataclass
 class SheetConfig:
-    credentials_file: str
-    sheet_id: str
-    worksheet_gid: str | None = None
+    webhook_url: str
+    secret: str
 
     @classmethod
     def from_env(cls) -> "SheetConfig | None":
-        """None (feature disabled) unless both required env vars are set —
-        this makes GSheet logging opt-in, so the tool keeps working before
-        the one-time Google Cloud service-account setup is done.
+        """None (feature disabled) unless both env vars are set — this makes
+        GSheet logging opt-in, so the tool keeps working before the Apps
+        Script webhook is deployed.
         """
-        credentials_file = os.environ.get("GOOGLE_SHEETS_CREDENTIALS_FILE")
-        sheet_id = os.environ.get("GOOGLE_SHEET_ID")
-        if not credentials_file or not sheet_id:
+        webhook_url = os.environ.get("GOOGLE_SHEETS_WEBHOOK_URL")
+        secret = os.environ.get("GOOGLE_SHEETS_WEBHOOK_SECRET")
+        if not webhook_url or not secret:
             return None
-        return cls(
-            credentials_file=credentials_file,
-            sheet_id=sheet_id,
-            worksheet_gid=os.environ.get("GOOGLE_SHEET_GID"),
-        )
+        return cls(webhook_url=webhook_url, secret=secret)
 
 
 class SheetLogger:
-    """Appends new job matches to a Google Sheet via a service account.
+    """Appends new job matches to a Google Sheet via a small Apps Script Web
+    App bound directly to the sheet — no Google Cloud project, no service
+    account, no credential file to protect. See README for the Apps Script
+    source and one-time deployment steps.
 
-    Assumes the target sheet already has a header row (# | Date Retrieved |
-    Company | Job Title) — this class only ever appends after the last
-    existing row, never touches row 1, so it won't clobber a sheet the user
-    has already set up.
-
-    The "#" column is written as the formula `=ROW()-1` rather than a
-    literal number, so it stays correct even if rows are later
-    deleted/reordered by hand (self-numbering, no need to read current sheet
-    state first to compute the next number).
+    The webhook URL plus a shared secret (checked inside the Apps Script,
+    not by Google) is the whole auth story — equivalent security posture to
+    any other bearer-token webhook, e.g. the Resend API key.
     """
 
     def __init__(self, config: SheetConfig):
-        creds = Credentials.from_service_account_file(config.credentials_file, scopes=SCOPES)
-        client = gspread.authorize(creds)
-        spreadsheet = client.open_by_key(config.sheet_id)
-        if config.worksheet_gid:
-            self.worksheet = spreadsheet.get_worksheet_by_id(int(config.worksheet_gid))
-        else:
-            self.worksheet = spreadsheet.sheet1
+        self.config = config
 
     def append_matches(
         self, matches: list[tuple[Job, LocationConfidence]], homepages: dict[str, str]
@@ -62,22 +45,26 @@ class SheetLogger:
         if not matches:
             return
 
-        today = datetime.now().strftime("%d/%m/%Y")
-        rows = []
-        for job, _confidence in matches:
-            homepage = homepages.get(job.company)
-            company_cell = (
-                f'=HYPERLINK("{homepage}","{_escape(job.company)}")'
-                if homepage
-                else job.company
-            )
-            title_cell = f'=HYPERLINK("{job.url}","{_escape(job.title)}")'
-            rows.append(["=ROW()-1", today, company_cell, title_cell])
+        # Deliberately local (not UTC): the script runs on the user's own
+        # Mac, and "Date Retrieved" should read as their own local date.
+        today = datetime.now().strftime("%d/%m/%Y")  # noqa: DTZ005
+        rows = [
+            {
+                "dateRetrieved": today,
+                "companyName": job.company,
+                "companyUrl": homepages.get(job.company, ""),
+                "jobTitle": job.title,
+                "jobUrl": job.url,
+            }
+            for job, _confidence in matches
+        ]
 
-        self.worksheet.append_rows(rows, value_input_option="USER_ENTERED")
-
-
-def _escape(text: str) -> str:
-    # HYPERLINK's second argument is a quoted string literal inside the
-    # formula — a literal double-quote in a job title would otherwise break it.
-    return text.replace('"', "'")
+        resp = httpx.post(
+            self.config.webhook_url,
+            json={"secret": self.config.secret, "rows": rows},
+            timeout=20,
+        )
+        resp.raise_for_status()
+        body = resp.json()
+        if body.get("status") != "ok":
+            raise RuntimeError(f"Apps Script webhook returned unexpected response: {body}")
