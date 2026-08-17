@@ -136,3 +136,8 @@
 - name: TikTok
   connector: tiktok
   config: {}
+
+- name: Stake
+  connector: breezy
+  config:
+    breezy_company: stake

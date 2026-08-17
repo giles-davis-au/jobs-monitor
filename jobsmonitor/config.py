@@ -7,6 +7,7 @@ from jobsmonitor.connectors.ashby import AshbyConnector
 from jobsmonitor.connectors.atlassian import AtlassianConnector
 from jobsmonitor.connectors.attrax import AttraxConnector
 from jobsmonitor.connectors.base import Connector
+from jobsmonitor.connectors.breezy import BreezyConnector
 from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
 from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
@@ -37,6 +38,7 @@ CONNECTOR_REGISTRY = {
     "eightfold": EightfoldConnector,
     "zip": ZipConnector,
     "tiktok": TikTokConnector,
+    "breezy": BreezyConnector,
 }
 
 

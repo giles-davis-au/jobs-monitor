@@ -1,0 +1,86 @@
+[
+  {
+    "id": "3fc25a406456",
+    "name": "Client Services Manager - Stake Super",
+    "url": "https://stake.breezy.hr/p/3fc25a406456-client-services-manager-stake-super",
+    "location": {
+      "country": {
+        "name": "Australia",
+        "id": "AU"
+      },
+      "state": {
+        "id": "NSW",
+        "name": "New South Wales"
+      },
+      "city": "Sydney"
+    }
+  },
+  {
+    "id": "7871f9bc06df",
+    "name": "Customer Experience Specialist",
+    "url": "https://stake.breezy.hr/p/7871f9bc06df-customer-experience-specialist",
+    "location": {
+      "country": {
+        "name": "Australia",
+        "id": "AU"
+      },
+      "state": {
+        "id": "NSW",
+        "name": "New South Wales"
+      },
+      "city": "Sydney"
+    }
+  },
+  {
+    "id": "e8845f03e7ef",
+    "name": "Customer Experience Specialist",
+    "url": "https://stake.breezy.hr/p/e8845f03e7ef-customer-experience-specialist",
+    "location": {
+      "country": {
+        "name": "Australia",
+        "id": "AU"
+      },
+      "state": {
+        "id": "NSW",
+        "name": "New South Wales"
+      },
+      "city": "Sydney"
+    }
+  },
+  {
+    "id": "69c2888a5f82",
+    "name": "Customer Success Analyst (Sun-Thurs S\u00e3o Paulo BR)",
+    "url": "https://stake.breezy.hr/p/69c2888a5f82-customer-success-analyst-sun-thurs-sao-paulo-br",
+    "location": {
+      "country": {
+        "name": "Brazil",
+        "id": "BR"
+      },
+      "city": "Sao Paulo"
+    }
+  },
+  {
+    "id": "ecd1e5804e8b",
+    "name": "Financial Operations Analyst - Brazil",
+    "url": "https://stake.breezy.hr/p/ecd1e5804e8b-financial-operations-analyst-brazil",
+    "location": {
+      "country": {
+        "name": "Brazil",
+        "id": "BR"
+      },
+      "city": "S\u00e3o Paulo"
+    }
+  },
+  {
+    "id": "b460d103e142",
+    "name": "SMSF Accountant - India",
+    "url": "https://stake.breezy.hr/p/b460d103e142-smsf-accountant-india",
+    "location": {
+      "country": {
+        "name": "India",
+        "id": "IN"
+      },
+      "city": "Pune"
+    }
+  }
+]
