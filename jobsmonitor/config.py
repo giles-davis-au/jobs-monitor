@@ -9,6 +9,7 @@ from jobsmonitor.connectors.attrax import AttraxConnector
 from jobsmonitor.connectors.bamboohr import BambooHrConnector
 from jobsmonitor.connectors.base import Connector
 from jobsmonitor.connectors.breezy import BreezyConnector
+from jobsmonitor.connectors.builtin import BuiltInConnector
 from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
 from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
@@ -43,6 +44,7 @@ CONNECTOR_REGISTRY = {
     "breezy": BreezyConnector,
     "bamboohr": BambooHrConnector,
     "revolut": RevolutConnector,
+    "builtin": BuiltInConnector,
 }
 
 

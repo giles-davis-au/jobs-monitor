@@ -192,3 +192,10 @@
   homepage: https://www.revolut.com
   connector: revolut
   config: {}
+
+- name: Airtasker
+  homepage: https://www.airtasker.com
+  connector: builtin
+  config:
+    base_url: https://builtinsydney.au
+    company_id: "194323"
