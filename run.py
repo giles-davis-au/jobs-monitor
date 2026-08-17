@@ -7,9 +7,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from jobsmonitor.config import load_companies, load_keywords
+from jobsmonitor.config import load_companies, load_company_homepages, load_keywords
 from jobsmonitor.notifier import EmailConfig
 from jobsmonitor.runner import run
+from jobsmonitor.sheets import SheetConfig, SheetLogger
 from jobsmonitor.store import Store
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -54,8 +55,13 @@ def main() -> int:
         setup_logging()
         connectors = load_companies(COMPANIES_PATH)
         keywords = load_keywords(KEYWORDS_PATH)
+        homepages = load_company_homepages(COMPANIES_PATH)
         email_config = EmailConfig.from_env()
-        run(store, connectors, keywords, email_config)
+
+        sheet_config = SheetConfig.from_env()
+        sheet_logger = SheetLogger(sheet_config) if sheet_config else None
+
+        run(store, connectors, keywords, email_config, sheet_logger, homepages)
         return 0
     finally:
         store.close()

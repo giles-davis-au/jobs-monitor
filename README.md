@@ -32,6 +32,35 @@ python3.13 -m venv .venv
   rather than trusting bad data, but this means Canva may not work reliably
   if this tool is ever migrated to run from GitHub Actions or similar.
 
+### Google Sheet logging (optional)
+
+New matches are also appended to a Google Sheet if configured — a row per
+match with columns `# | Date Retrieved | Company | Job Title`, both Company
+and Job Title hyperlinked. This is off by default (nothing breaks without
+it); to enable it, one-time setup in [Google Cloud Console](https://console.cloud.google.com):
+
+1. Create a project (or use an existing one) and enable the **Google Sheets API**
+   for it (APIs & Services → Enable APIs and Services → search "Google
+   Sheets API" → Enable).
+2. Create a **service account** (IAM & Admin → Service Accounts → Create
+   Service Account) — this is a robot identity, not tied to your personal
+   Google login.
+3. On that service account, create a **JSON key** (Keys tab → Add Key →
+   Create new key → JSON) and download it. Save it somewhere outside the
+   repo, e.g. `~/.config/jobs-monitor/google-sheets-credentials.json` — it's
+   a credential, never commit it.
+4. Open your target Google Sheet, click **Share**, and share it with the
+   service account's email address (looks like
+   `something@your-project.iam.gserviceaccount.com`, shown on its detail
+   page) as **Editor**.
+5. In `.env`, set `GOOGLE_SHEETS_CREDENTIALS_FILE` to the path from step 3.
+   `GOOGLE_SHEET_ID` and `GOOGLE_SHEET_GID` are already pre-filled in
+   `.env.example` for your sheet.
+
+The sheet needs its header row (`# | Date Retrieved | Company | Job Title`)
+already in place — the tool only ever appends after existing rows, it never
+touches row 1.
+
 ## Running
 
 ```bash

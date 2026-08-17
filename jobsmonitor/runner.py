@@ -3,6 +3,7 @@ import logging
 from jobsmonitor.connectors.base import Connector, ConnectorError
 from jobsmonitor.matcher import find_matches
 from jobsmonitor.notifier import EmailConfig, send_degraded_alert, send_digest
+from jobsmonitor.sheets import SheetLogger
 from jobsmonitor.store import Store
 
 logger = logging.getLogger("jobsmonitor")
@@ -13,6 +14,8 @@ def run(
     connectors: list[Connector],
     keywords: list[str],
     email_config: EmailConfig,
+    sheet_logger: SheetLogger | None = None,
+    homepages: dict[str, str] | None = None,
 ) -> None:
     """One fetch-match-notify cycle across every configured company.
 
@@ -54,6 +57,15 @@ def run(
 
     if all_new_matches:
         send_digest(email_config, all_new_matches, keywords)
+
+        if sheet_logger:
+            try:
+                sheet_logger.append_matches(all_new_matches, homepages or {})
+            except Exception as e:
+                # GSheet logging is a secondary channel — the email already
+                # went out and the matches are already in seen_jobs, so a
+                # failure here loses nothing, just logged rather than raised.
+                logger.error("failed to append matches to Google Sheet: %s", e)
 
     logger.info(
         "run complete: %d new match(es) across %d companies", len(all_new_matches), len(connectors)

@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from jobsmonitor.connectors.base import ConnectorError
 from jobsmonitor.models import Job
@@ -97,4 +97,59 @@ def test_dedup_prevents_renotifying_same_job_across_runs(tmp_path):
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     assert digest.call_count == 1  # only the first run had a new match
+    store.close()
+
+
+def test_sheet_logger_receives_new_matches_and_homepages(tmp_path):
+    store = Store(tmp_path / "test.db")
+    job = Job("Block", "1", "Program Manager", "https://block.xyz/careers/jobs/1", "Sydney, Australia")
+    connectors = [FakeConnector("Block", jobs=[job])]
+    sheet_logger = MagicMock()
+    homepages = {"Block": "https://block.xyz"}
+
+    with patch("jobsmonitor.runner.send_digest"):
+        run(
+            store,
+            connectors,
+            keywords=["Program Manager"],
+            email_config=CONFIG,
+            sheet_logger=sheet_logger,
+            homepages=homepages,
+        )
+
+    sheet_logger.append_matches.assert_called_once()
+    matches_arg, homepages_arg = sheet_logger.append_matches.call_args[0]
+    assert [job.job_id for job, _ in matches_arg] == ["1"]
+    assert homepages_arg == homepages
+    store.close()
+
+
+def test_sheet_logger_failure_does_not_crash_the_run_or_block_email(tmp_path):
+    store = Store(tmp_path / "test.db")
+    job = Job("Block", "1", "Program Manager", "https://x/1", "Sydney, Australia")
+    connectors = [FakeConnector("Block", jobs=[job])]
+    sheet_logger = MagicMock()
+    sheet_logger.append_matches.side_effect = RuntimeError("Google API is down")
+
+    with patch("jobsmonitor.runner.send_digest") as digest:
+        run(
+            store,
+            connectors,
+            keywords=["Program Manager"],
+            email_config=CONFIG,
+            sheet_logger=sheet_logger,
+        )
+
+    digest.assert_called_once()  # email still sent despite sheet failure
+    store.close()
+
+
+def test_no_sheet_logger_is_fine(tmp_path):
+    store = Store(tmp_path / "test.db")
+    job = Job("Block", "1", "Program Manager", "https://x/1", "Sydney, Australia")
+    connectors = [FakeConnector("Block", jobs=[job])]
+
+    with patch("jobsmonitor.runner.send_digest"):
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)  # sheet_logger=None default
+
     store.close()
