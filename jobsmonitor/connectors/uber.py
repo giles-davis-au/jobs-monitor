@@ -74,6 +74,12 @@ class UberConnector:
             company=self.company,
             job_id=str(j.get("Id", "")),
             title=j.get("Title", ""),
-            url=f"https://www.uber.com{url_path}",
+            # NOTE: the advert lives on jobs.uber.com, not www.uber.com — the
+            # latter 404s on this same relative path despite being the site
+            # we navigate to fetch the API from. Confirmed by hand: a bare
+            # www.uber.com URL doesn't just 404, an AU-based client following
+            # it gets redirected into a broken doubled-locale path
+            # (.../au/en/en/jobs/{id}/).
+            url=f"https://jobs.uber.com{url_path}",
             location=location_text,
         )

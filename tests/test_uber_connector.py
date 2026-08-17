@@ -12,7 +12,7 @@ def test_parse_job_builds_absolute_url_and_joined_locations():
     assert job.company == "Uber"
     assert job.job_id == "301367"
     assert job.title == "Tech People Partner"
-    assert job.url == "https://www.uber.com/en/jobs/301367/"
+    assert job.url == "https://jobs.uber.com/en/jobs/301367/"
     assert job.location == "San Francisco, California, United States"
 
 
