@@ -97,8 +97,10 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.gilesdavis.jobsmonit
 ```
 
 The `cd` matters — the `cp` command uses a path relative to the project
-folder. Once installed, it fires immediately (`RunAtLoad`), then every 3
-hours after that, indefinitely, with no Claude Code session needed.
+folder. Once installed, it *should* fire immediately (`RunAtLoad`), then
+every 3 hours after that, indefinitely, with no Claude Code session needed —
+but see **Troubleshooting** below if nothing seems to have happened a few
+minutes after install.
 
 ### Check status
 
@@ -111,6 +113,30 @@ Logs: day-to-day run logging goes to `jobsmonitor.log`; launchd's own
 stdout/stderr for the process go to `launchd/stdout.log` and
 `launchd/stderr.log` (catches startup failures before app logging even kicks
 in, e.g. a Python crash on import).
+
+### Troubleshooting: installed but nothing happened
+
+`RunAtLoad` has occasionally been observed not firing immediately on
+install, even though the plist is correctly configured — a launchd timing
+quirk, not a config problem. Symptom: no email a few minutes after install,
+and `launchctl print` shows it never actually ran:
+
+```bash
+launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | grep -E "runs|last exit code"
+# runs = 0
+# last exit code = (never exited)
+```
+
+Fix — force it to run right now:
+
+```bash
+launchctl kickstart -p gui/$(id -u)/com.gilesdavis.jobsmonitor
+```
+
+That run becomes the new baseline for the 3-hour schedule (next automatic
+run is 3 hours after it, not after the original install time), and no
+further manual steps are needed after that — this has only been seen at
+initial install, not on the recurring scheduled runs.
 
 ### Stop it
 
