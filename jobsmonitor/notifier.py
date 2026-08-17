@@ -47,12 +47,19 @@ def _send(config: EmailConfig, subject: str, body: str) -> None:
     resp.raise_for_status()
 
 
-def send_digest(config: EmailConfig, matches: list[tuple[Job, LocationConfidence]]) -> None:
+def send_digest(
+    config: EmailConfig, matches: list[tuple[Job, LocationConfidence]], keywords: list[str]
+) -> None:
     """The normal-case email: only sent when there's something to report."""
     if not matches:
         return
 
-    lines = [f"{len(matches)} new Sydney job match(es):", ""]
+    lines = [
+        "Searching for: " + ", ".join(keywords),
+        "",
+        f"{len(matches)} new Sydney job match(es):",
+        "",
+    ]
     for job, confidence in matches:
         flag = (
             "  [location: country-only — verify city]"

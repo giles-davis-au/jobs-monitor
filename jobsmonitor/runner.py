@@ -53,7 +53,7 @@ def run(
         all_new_matches.extend(new_matches)
 
     if all_new_matches:
-        send_digest(email_config, all_new_matches)
+        send_digest(email_config, all_new_matches, keywords)
 
     logger.info(
         "run complete: %d new match(es) across %d companies", len(all_new_matches), len(connectors)
