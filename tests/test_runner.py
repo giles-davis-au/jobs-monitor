@@ -30,9 +30,10 @@ def test_failed_connector_is_recorded_as_error_and_alerted_not_silently_empty(tm
     ) as digest:
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
-    # the failure must be loud: a distinct alert, and NOT folded into the digest
+    # the failure must be loud: a distinct alert, separate from the (still
+    # always-sent, now-empty) digest, which itself remains the heartbeat
     alert.assert_called_once_with(CONFIG, "Broken Co", "error", "site returned 500")
-    digest.assert_not_called()
+    digest.assert_called_once_with(CONFIG, [], ["Program Manager"])
 
     runs = store.recent_runs("Broken Co")
     assert runs[0]["status"] == "error"
@@ -46,7 +47,9 @@ def test_connector_returning_zero_after_previously_healthy_is_flagged_degraded(t
 
     connectors = [FakeConnector("Flaky Co", jobs=[])]  # now returns nothing
 
-    with patch("jobsmonitor.runner.send_degraded_alert") as alert:
+    with patch("jobsmonitor.runner.send_degraded_alert") as alert, patch(
+        "jobsmonitor.runner.send_digest"
+    ):
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     alert.assert_called_once()
@@ -58,7 +61,9 @@ def test_connector_genuinely_having_zero_jobs_first_time_is_ok_not_degraded(tmp_
     store = Store(tmp_path / "test.db")
     connectors = [FakeConnector("New Co", jobs=[])]
 
-    with patch("jobsmonitor.runner.send_degraded_alert") as alert:
+    with patch("jobsmonitor.runner.send_degraded_alert") as alert, patch(
+        "jobsmonitor.runner.send_digest"
+    ):
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
     alert.assert_not_called()
@@ -96,7 +101,26 @@ def test_dedup_prevents_renotifying_same_job_across_runs(tmp_path):
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
         run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
 
-    assert digest.call_count == 1  # only the first run had a new match
+    # digest is sent every run regardless (it's also the heartbeat) — dedup
+    # means the second run's matches list is empty, not that digest is skipped
+    assert digest.call_count == 2
+    first_run_matches = digest.call_args_list[0][0][1]
+    second_run_matches = digest.call_args_list[1][0][1]
+    assert len(first_run_matches) == 1
+    assert len(second_run_matches) == 0
+    store.close()
+
+
+def test_digest_always_sent_even_with_zero_matches(tmp_path):
+    store = Store(tmp_path / "test.db")
+    connectors = [FakeConnector("Quiet Co", jobs=[])]
+
+    with patch("jobsmonitor.runner.send_digest") as digest:
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
+
+    # this is deliberately a heartbeat: getting nothing at all (rather than a
+    # "0 new matches" email) is the signal something upstream is broken
+    digest.assert_called_once_with(CONFIG, [], ["Program Manager"])
     store.close()
 
 

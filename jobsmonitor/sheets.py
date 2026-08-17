@@ -63,6 +63,10 @@ class SheetLogger:
             self.config.webhook_url,
             json={"secret": self.config.secret, "rows": rows},
             timeout=20,
+            # Apps Script Web App URLs (.../exec) respond via a 302 to
+            # script.googleusercontent.com to actually deliver the content —
+            # this is normal, not an error condition, so follow it.
+            follow_redirects=True,
         )
         resp.raise_for_status()
         body = resp.json()

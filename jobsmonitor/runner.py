@@ -55,17 +55,18 @@ def run(
         logger.info("%s: fetched=%d matches=%d new=%d", company, jobs_fetched, len(matches), len(new_matches))
         all_new_matches.extend(new_matches)
 
-    if all_new_matches:
-        send_digest(email_config, all_new_matches, keywords)
+    send_digest(email_config, all_new_matches, keywords)
 
-        if sheet_logger:
-            try:
-                sheet_logger.append_matches(all_new_matches, homepages or {})
-            except Exception as e:
-                # GSheet logging is a secondary channel — the email already
-                # went out and the matches are already in seen_jobs, so a
-                # failure here loses nothing, just logged rather than raised.
-                logger.error("failed to append matches to Google Sheet: %s", e)
+    if all_new_matches and sheet_logger:
+        try:
+            sheet_logger.append_matches(all_new_matches, homepages or {})
+        except Exception as e:  # noqa: BLE001
+            # GSheet logging is a secondary channel — the email already went
+            # out and the matches are already in seen_jobs, so a failure
+            # here loses nothing, just logged rather than raised. Broad
+            # catch deliberate: any failure mode from the webhook call
+            # (network, auth, malformed response) should degrade the same way.
+            logger.error("failed to append matches to Google Sheet: %s", e)
 
     logger.info(
         "run complete: %d new match(es) across %d companies", len(all_new_matches), len(connectors)

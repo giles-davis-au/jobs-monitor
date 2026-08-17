@@ -50,28 +50,32 @@ def _send(config: EmailConfig, subject: str, body: str) -> None:
 def send_digest(
     config: EmailConfig, matches: list[tuple[Job, LocationConfidence]], keywords: list[str]
 ) -> None:
-    """The normal-case email: only sent when there's something to report."""
-    if not matches:
-        return
+    """Sent every run, match or no match — this is deliberately also a
+    heartbeat: getting nothing at all (rather than a "0 new matches" email)
+    after a scheduled run is the signal that something upstream (Resend,
+    the whole run, etc.) may be silently broken, not just that there was
+    nothing to report.
+    """
+    lines = ["Searching for: " + ", ".join(keywords), ""]
 
-    lines = [
-        "Searching for: " + ", ".join(keywords),
-        "",
-        f"{len(matches)} new Sydney job match(es):",
-        "",
-    ]
-    for job, confidence in matches:
-        flag = (
-            "  [location: country-only — verify city]"
-            if confidence == LocationConfidence.COUNTRY_ONLY
-            else ""
-        )
-        lines.append(f"- {job.title} ({job.company}){flag}")
-        lines.append(f"  {job.location}")
-        lines.append(f"  {job.url}")
+    if matches:
+        lines.append(f"{len(matches)} new Sydney job match(es):")
         lines.append("")
+        for job, confidence in matches:
+            flag = (
+                "  [location: country-only — verify city]"
+                if confidence == LocationConfidence.COUNTRY_ONLY
+                else ""
+            )
+            lines.append(f"- {job.title} ({job.company}){flag}")
+            lines.append(f"  {job.location}")
+            lines.append(f"  {job.url}")
+            lines.append("")
+        subject = f"[jobs-monitor] {len(matches)} new match(es)"
+    else:
+        lines.append("No new matches this run.")
+        subject = "[jobs-monitor] 0 new matches"
 
-    subject = f"[jobs-monitor] {len(matches)} new match(es)"
     _send(config, subject, "\n".join(lines))
 
 
