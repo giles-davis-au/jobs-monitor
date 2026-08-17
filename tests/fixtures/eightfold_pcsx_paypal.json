@@ -1,0 +1,42 @@
+{
+  "data": {
+    "positions": [
+      {
+        "id": 274919769053,
+        "name": "Sr Manager, Network Compliance & Payment Partner Oversight",
+        "locations": [
+          "San Jose, California, United States of America",
+          "Scottsdale, Arizona, United States of America",
+          "Chicago, Illinois, United States of America",
+          "Omaha, Nebraska, United States of America"
+        ],
+        "positionUrl": "/careers/job/274919769053"
+      },
+      {
+        "id": 274921701632,
+        "name": "Sr Data Scientist",
+        "locations": [
+          "Chicago, Illinois, United States of America"
+        ],
+        "positionUrl": "/careers/job/274921701632"
+      },
+      {
+        "id": 274921701672,
+        "name": "Software Engineer",
+        "locations": [
+          "New York City, New York, United States of America"
+        ],
+        "positionUrl": "/careers/job/274921701672"
+      },
+      {
+        "id": 274921701755,
+        "name": "Software Engineer",
+        "locations": [
+          "Scottsdale, Arizona, United States of America"
+        ],
+        "positionUrl": "/careers/job/274921701755"
+      }
+    ],
+    "count": 4
+  }
+}

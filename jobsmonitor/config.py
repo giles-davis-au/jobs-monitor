@@ -10,11 +10,14 @@ from jobsmonitor.connectors.base import Connector
 from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
 from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
+from jobsmonitor.connectors.eightfold import EightfoldConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.lever import LeverConnector
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
+from jobsmonitor.connectors.uber import UberConnector
 from jobsmonitor.connectors.workable import WorkableConnector
 from jobsmonitor.connectors.workday import WorkdayConnector
+from jobsmonitor.connectors.zip import ZipConnector
 
 CONNECTOR_REGISTRY = {
     "greenhouse": GreenhouseConnector,
@@ -29,6 +32,9 @@ CONNECTOR_REGISTRY = {
     "workday": WorkdayConnector,
     "teamtailor": TeamtailorConnector,
     "employmenthero_marketplace": EmploymentHeroMarketplaceConnector,
+    "uber": UberConnector,
+    "eightfold": EightfoldConnector,
+    "zip": ZipConnector,
 }
 
 

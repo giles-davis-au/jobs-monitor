@@ -7,6 +7,13 @@ def test_classify_location_sydney():
     assert classify_location("Remote - APAC - Remote; Sydney - Australia") == LocationConfidence.CITY
 
 
+def test_classify_location_sydney_suburb_without_the_word_sydney():
+    # Domain's HQ is listed as this exact string with no "Sydney" in it —
+    # confirmed missing 31 real postings before SYDNEY_SUBURBS was added
+    assert classify_location("Pyrmont, New South Wales, Australia") == LocationConfidence.CITY
+    assert classify_location("North Sydney, NSW") == LocationConfidence.CITY
+
+
 def test_classify_location_other_au_city_excluded():
     assert classify_location("Melbourne, Australia") is None
     assert classify_location("Brisbane, Australia") is None

@@ -1,0 +1,202 @@
+{
+  "jobs": [
+    {
+      "Id": "301367",
+      "Title": "Tech People Partner",
+      "Locations": [
+        {
+          "Identifier": "",
+          "City": "San Francisco",
+          "Region": "California",
+          "Country": "United States",
+          "CountryCode": null,
+          "Address": "San Francisco, CA, USA",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              -122.4194155,
+              37.7749295
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        }
+      ],
+      "Urls": [
+        {
+          "Culture": "en-us",
+          "Url": "/en/jobs/301367/",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "300801",
+      "Title": "Staff Data Scientist, Tech",
+      "Locations": [
+        {
+          "Identifier": "",
+          "City": "Sunnyvale",
+          "Region": "California",
+          "Country": "United States",
+          "CountryCode": null,
+          "Address": "Sunnyvale, CA, USA",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              -122.0363496,
+              37.36883
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        }
+      ],
+      "Urls": [
+        {
+          "Culture": "en-us",
+          "Url": "/en/jobs/300801/",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "300688",
+      "Title": "Product Operations II - Product",
+      "Locations": [
+        {
+          "Identifier": "",
+          "City": "Amsterdam",
+          "Region": "Noord-Holland",
+          "Country": "Netherlands",
+          "CountryCode": null,
+          "Address": "Amsterdam, Netherlands",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              4.9041389,
+              52.3675734
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        }
+      ],
+      "Urls": [
+        {
+          "Culture": "en-us",
+          "Url": "/en/jobs/300688/",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "300629",
+      "Title": "Senior - FRM Advisory",
+      "Locations": [
+        {
+          "Identifier": "",
+          "City": "San Francisco",
+          "Region": "California",
+          "Country": "United States",
+          "CountryCode": null,
+          "Address": "San Francisco, CA, USA",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              -122.4194155,
+              37.7749295
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        },
+        {
+          "Identifier": "",
+          "City": "New York City",
+          "Region": "New York",
+          "Country": "United States",
+          "CountryCode": null,
+          "Address": "New York, NY, USA",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              -74.0059728,
+              40.7127753
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        }
+      ],
+      "Urls": [
+        {
+          "Culture": "en-us",
+          "Url": "/en/jobs/300629/",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "300923",
+      "Title": "Implementation Lead, Uber for Business, Brazil",
+      "Locations": [
+        {
+          "Identifier": "",
+          "City": "Sao Paulo",
+          "Region": "SP",
+          "Country": "Brazil",
+          "CountryCode": null,
+          "Address": "S\u00e3o Paulo, State of S\u00e3o Paulo, Brazil",
+          "PostalCode": null,
+          "LocationPoint": {
+            "type": "Point",
+            "coordinates": [
+              -46.6395571,
+              -23.5557714
+            ],
+            "crs": {
+              "type": "name",
+              "properties": {
+                "name": "EPSG:4326"
+              }
+            }
+          }
+        }
+      ],
+      "Urls": [
+        {
+          "Culture": "en-us",
+          "Url": "/en/jobs/300923/",
+          "IsDefault": true
+        }
+      ]
+    }
+  ],
+  "totalPages": 1
+}

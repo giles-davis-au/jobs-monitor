@@ -107,3 +107,28 @@
   connector: employmenthero_marketplace
   config:
     org_slug: smokeball-australia-8gtiq
+
+- name: Uber
+  connector: uber
+  config: {}
+
+- name: PayPal
+  connector: eightfold
+  config:
+    api_url: https://paypal.eightfold.ai/api/pcsx/search
+    domain: paypal.com
+
+- name: Domain
+  connector: eightfold
+  config:
+    api_url: https://careers.costargroup.com/api/apply/v2/jobs
+    domain: costar.com
+
+- name: Adyen
+  connector: greenhouse
+  config:
+    board_token: adyen
+
+- name: Zip
+  connector: zip
+  config: {}
