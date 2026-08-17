@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a2001837-cd87-4217-a09f-68d8d9c9ea6e",
+    "text": "Finance & Strategy Manager",
+    "locations": [
+      { "name": "Sydney", "type": "office", "country": "Australia" },
+      { "name": "London", "type": "office", "country": "United Kingdom" }
+    ],
+    "description": "",
+    "team": "Finance",
+    "video": null,
+    "is_featured": false
+  },
+  {
+    "id": "ba99036f-306a-4d82-98bc-8ff73853d41c",
+    "text": "Graphic Designer (Growth)",
+    "locations": [
+      { "name": "Japan - Remote", "type": "remote", "country": "Japan" },
+      { "name": "Tokyo", "type": "office", "country": "Japan" }
+    ],
+    "description": "",
+    "team": "Marketing & Comms",
+    "video": null,
+    "is_featured": false
+  }
+]

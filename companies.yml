@@ -173,3 +173,22 @@
   connector: breezy
   config:
     breezy_company: stake
+
+- name: Zepto
+  homepage: https://zepto.com.au
+  connector: bamboohr
+  config:
+    bamboo_company: zepto
+
+- name: Global Payments
+  homepage: https://jobs.globalpayments.com
+  connector: workday
+  config:
+    tenant: worldpay
+    wd_host: wd5
+    site: Worldpay_External_Careers_Site
+
+- name: Revolut
+  homepage: https://www.revolut.com
+  connector: revolut
+  config: {}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "totalCount": 3
+  },
+  "result": [
+    {
+      "id": "99",
+      "jobOpeningName": "Strategic Growth Manager",
+      "departmentId": "18773",
+      "departmentLabel": "Partnerships",
+      "employmentStatusLabel": "Full-Time",
+      "employmentType": null,
+      "location": {
+        "city": null,
+        "state": null
+      },
+      "atsLocation": {
+        "country": "Australia",
+        "state": "New South Wales",
+        "province": null,
+        "city": "Sydney"
+      },
+      "isRemote": null,
+      "locationType": "1"
+    },
+    {
+      "id": "101",
+      "jobOpeningName": "Senior Data Engineer",
+      "departmentId": "18592",
+      "departmentLabel": "Software Engineering",
+      "employmentStatusLabel": "Full-Time",
+      "employmentType": null,
+      "location": {
+        "city": null,
+        "state": null
+      },
+      "atsLocation": {
+        "country": "Australia",
+        "state": null,
+        "province": null,
+        "city": null
+      },
+      "isRemote": null,
+      "locationType": "1"
+    },
+    {
+      "id": "102",
+      "jobOpeningName": "Software Engineers (Front-end & Back-end roles)",
+      "departmentId": "18592",
+      "departmentLabel": "Software Engineering",
+      "employmentStatusLabel": "Full-Time",
+      "employmentType": null,
+      "location": {
+        "city": null,
+        "state": null
+      },
+      "atsLocation": {
+        "country": "Australia",
+        "state": null,
+        "province": null,
+        "city": null
+      },
+      "isRemote": null,
+      "locationType": "1"
+    }
+  ]
+}

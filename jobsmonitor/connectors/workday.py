@@ -63,7 +63,10 @@ class WorkdayConnector:
         jobs = []
         for p in postings:
             external_path = p.get("externalPath", "")
-            location = f"{p.get('locationsText', '')} {external_path}".strip()
+            # `or ""` (not a dict default) because Workday sometimes returns
+            # locationsText: null — present but empty, which .get(key, "")
+            # would not catch, leaking a literal "None" into location text.
+            location = f"{p.get('locationsText') or ''} {external_path}".strip()
             jobs.append(
                 Job(
                     company=self.company,

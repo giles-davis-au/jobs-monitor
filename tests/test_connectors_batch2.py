@@ -18,6 +18,23 @@ def test_workday_parses_fixture(mock_post):
     assert all(j.url.startswith("https://relx.wd3.myworkdayjobs.com/LexisNexisLegal") for j in jobs)
 
 
+def test_workday_handles_null_locations_text_without_literal_none(mock_post):
+    # Confirmed live on Global Payments/Worldpay's Workday tenant:
+    # locationsText can be present but JSON null, not just absent.
+    fixture = {
+        "total": 1,
+        "jobPostings": [
+            {"title": "Insider Threat Analyst I", "externalPath": "/job/CINCINNATI-OHIO/x", "locationsText": None}
+        ],
+    }
+    mock_post.returns(httpx.Response(200, json=fixture))
+
+    jobs = WorkdayConnector("Global Payments", "worldpay", "wd5", "Worldpay_External_Careers_Site").fetch()
+
+    assert "None" not in jobs[0].location
+    assert jobs[0].location == "/job/CINCINNATI-OHIO/x"
+
+
 def test_workday_stops_pagination_on_short_page_even_if_total_field_lies(mock_post):
     # Reproduces the real API quirk found during development: only the first
     # page reports an accurate `total`; later pages report total=0.

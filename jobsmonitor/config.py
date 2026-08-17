@@ -6,6 +6,7 @@ from jobsmonitor.connectors.airwallex import AirwallexConnector
 from jobsmonitor.connectors.ashby import AshbyConnector
 from jobsmonitor.connectors.atlassian import AtlassianConnector
 from jobsmonitor.connectors.attrax import AttraxConnector
+from jobsmonitor.connectors.bamboohr import BambooHrConnector
 from jobsmonitor.connectors.base import Connector
 from jobsmonitor.connectors.breezy import BreezyConnector
 from jobsmonitor.connectors.canva import CanvaConnector
@@ -14,6 +15,7 @@ from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMark
 from jobsmonitor.connectors.eightfold import EightfoldConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.lever import LeverConnector
+from jobsmonitor.connectors.revolut import RevolutConnector
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
 from jobsmonitor.connectors.tiktok import TikTokConnector
 from jobsmonitor.connectors.uber import UberConnector
@@ -39,6 +41,8 @@ CONNECTOR_REGISTRY = {
     "zip": ZipConnector,
     "tiktok": TikTokConnector,
     "breezy": BreezyConnector,
+    "bamboohr": BambooHrConnector,
+    "revolut": RevolutConnector,
 }
 
 

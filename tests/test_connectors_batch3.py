@@ -1,68 +1,59 @@
 import httpx
 import pytest
 
+from jobsmonitor.connectors.bamboohr import BambooHrConnector
 from jobsmonitor.connectors.base import ConnectorError
-from jobsmonitor.connectors.eightfold import EightfoldConnector
-from jobsmonitor.connectors.zip import ZipConnector
-from tests.conftest import load_json_fixture, load_text_fixture
+from jobsmonitor.connectors.revolut import RevolutConnector
+from tests.conftest import load_json_fixture
 
 
-def test_eightfold_parses_pcsx_variant(mock_get):
-    fixture = load_json_fixture("eightfold_pcsx_paypal.json")
+def test_bamboohr_parses_fixture(mock_get):
+    fixture = load_json_fixture("bamboohr_zepto.json")
     mock_get.returns(httpx.Response(200, json=fixture))
 
-    jobs = EightfoldConnector("PayPal", "https://paypal.eightfold.ai/api/pcsx/search", "paypal.com").fetch()
-
-    assert len(jobs) == len(fixture["data"]["positions"])
-    assert all(j.url.startswith("https://paypal.eightfold.ai/careers/job/") for j in jobs)
-
-
-def test_eightfold_parses_applyv2_variant(mock_get):
-    fixture = load_json_fixture("eightfold_applyv2_costar.json")
-    mock_get.returns(httpx.Response(200, json=fixture))
-
-    jobs = EightfoldConnector("Domain", "https://careers.costargroup.com/api/apply/v2/jobs", "costar.com").fetch()
-
-    assert len(jobs) == len(fixture["positions"])
-    assert all(j.url.startswith("https://careers.costargroup.com") or "eightfold.ai" in j.url for j in jobs)
-
-
-def test_eightfold_paginates_via_start_offset(mock_get):
-    page1 = {"data": {"positions": [{"id": i, "name": f"Job {i}", "locations": [], "positionUrl": f"/j/{i}"} for i in range(4)], "count": 6}}
-    page2 = {"data": {"positions": [{"id": i, "name": f"Job {i}", "locations": [], "positionUrl": f"/j/{i}"} for i in range(4, 6)], "count": 6}}
-    mock_get.returns(httpx.Response(200, json=page1))
-    mock_get.returns(httpx.Response(200, json=page2))
-
-    jobs = EightfoldConnector("Acme", "https://acme.eightfold.ai/api/pcsx/search", "acme.com").fetch()
-
-    assert len(jobs) == 6
-    assert len(mock_get.calls) == 2
-
-
-def test_eightfold_raises_on_unexpected_shape(mock_get):
-    mock_get.returns(httpx.Response(200, json={"nope": "wrong"}))
-    with pytest.raises(ConnectorError):
-        EightfoldConnector("Acme", "https://acme.eightfold.ai/api/pcsx/search", "acme.com").fetch()
-
-
-def test_zip_parses_fixture(mock_get):
-    html = load_text_fixture("zip_roles.html")
-    mock_get.returns(httpx.Response(200, text=html))
-
-    jobs = ZipConnector().fetch()
+    jobs = BambooHrConnector("Zepto", "zepto").fetch()
 
     assert len(jobs) == 3
-    assert all(j.url.startswith("https://zip.co/careers/roles/") for j in jobs)
-    assert all(j.title for j in jobs)
+    assert all(j.url.startswith("https://zepto.bamboohr.com/careers/") for j in jobs)
+    sydney_job = next(j for j in jobs if j.job_id == "99")
+    assert sydney_job.location == "Sydney, New South Wales, Australia"
+    # atsLocation present but all fields null -> empty string, not "None"
+    no_city_job = next(j for j in jobs if j.job_id == "101")
+    assert no_city_job.location == "Australia"
 
 
-def test_zip_raises_when_total_present_but_no_links(mock_get):
-    mock_get.returns(httpx.Response(200, text="<html><body><p>5 roles in 1 location</p></body></html>"))
+def test_bamboohr_raises_on_unexpected_shape(mock_get):
+    mock_get.returns(httpx.Response(200, json={"nope": "wrong shape"}))
     with pytest.raises(ConnectorError):
-        ZipConnector().fetch()
+        BambooHrConnector("Zepto", "zepto").fetch()
 
 
-def test_zip_raises_when_roles_count_missing(mock_get):
-    mock_get.returns(httpx.Response(200, text="<html><body>nothing here</body></html>"))
-    with pytest.raises(ConnectorError):
-        ZipConnector().fetch()
+def test_revolut_parse_position_extracts_locations():
+    connector = RevolutConnector()
+    fixture = load_json_fixture("revolut_positions.json")
+
+    jobs = [connector._parse_position(p) for p in fixture]
+
+    assert len(jobs) == 2
+    sydney_job = jobs[0]
+    assert sydney_job.title == "Finance & Strategy Manager"
+    assert sydney_job.location == "Sydney; London"
+    assert sydney_job.url == (
+        "https://www.revolut.com/en-AU/careers/position/"
+        "finance-strategy-manager-a2001837-cd87-4217-a09f-68d8d9c9ea6e/"
+    )
+
+
+def test_revolut_slugify_strips_non_alphanumerics():
+    connector = RevolutConnector()
+
+    assert connector._slugify("Finance & Strategy Manager") == "finance-strategy-manager"
+    assert connector._slugify("Graphic Designer (Growth)") == "graphic-designer-growth"
+
+
+def test_revolut_parse_position_handles_missing_locations():
+    connector = RevolutConnector()
+
+    job = connector._parse_position({"id": "abc", "text": "Some Role", "locations": None})
+
+    assert job.location == ""
