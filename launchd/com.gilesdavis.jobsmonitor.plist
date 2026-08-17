@@ -5,6 +5,18 @@
     <key>Label</key>
     <string>com.gilesdavis.jobsmonitor</string>
 
+    <!-- Runs as a LaunchDaemon (system domain), not a LaunchAgent, so the
+         schedule doesn't depend on the GUI session being "active". A
+         LaunchAgent's StartInterval spawn was observed getting stuck as
+         "pending spawn, domain in on-demand-only mode" — logged exactly on
+         schedule but never actually dispatched — while the Mac was awake
+         the whole time (no sleep/wake events), seemingly because the GUI
+         session wasn't considered active enough at that moment. Daemons
+         aren't subject to that gating. UserName keeps it running as this
+         user (not root) so file/permission behaviour is unchanged. -->
+    <key>UserName</key>
+    <string>gilesdavis</string>
+
     <key>ProgramArguments</key>
     <array>
         <string>/Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor/.venv/bin/python</string>

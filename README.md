@@ -83,30 +83,38 @@ which also covers checking status and stopping it.
 
 ## Scheduling
 
-Runs on macOS via `launchd` every 3 hours, counted from whenever the job is
+Runs on macOS via `launchd`, installed as a **LaunchDaemon** (system domain,
+`/Library/LaunchDaemons`), every 3 hours counted from whenever the job is
 (re)installed — not anchored to fixed clock times — plus once immediately at
 install, via `RunAtLoad`. Nothing is installed automatically; the three
 sections below are the full lifecycle.
+
+It's a LaunchDaemon rather than a LaunchAgent deliberately — see
+**Troubleshooting** below for why. All commands need `sudo`, and will prompt
+for your Mac password.
 
 ### Install and run
 
 ```bash
 cd /Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor
-cp launchd/com.gilesdavis.jobsmonitor.plist ~/Library/LaunchAgents/
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
+sudo cp launchd/com.gilesdavis.jobsmonitor.plist /Library/LaunchDaemons/
+sudo chown root:wheel /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist
+sudo chmod 644 /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist
+sudo launchctl bootstrap system /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist
 ```
 
 The `cd` matters — the `cp` command uses a path relative to the project
-folder. Once installed, it *should* fire immediately (`RunAtLoad`), then
-every 3 hours after that, indefinitely, with no Claude Code session needed —
-but see **Troubleshooting** below if nothing seems to have happened a few
-minutes after install.
+folder. The plist has a `UserName` key set to `gilesdavis`, so the daemon
+runs as you (not root) — file permissions and `.env` access behave exactly
+like a normal user process. Once installed, it fires immediately
+(`RunAtLoad`), then every 3 hours after that, indefinitely, with no Claude
+Code session and no login session needed at all.
 
 ### Check status
 
 ```bash
-.venv/bin/python run.py --status                              # per-company run history — the useful one
-launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | head -20   # confirms launchd itself has it registered
+.venv/bin/python run.py --status                                 # per-company run history — the useful one
+launchctl print system/com.gilesdavis.jobsmonitor | head -20     # confirms launchd itself has it registered (no sudo needed to read)
 ```
 
 Logs: day-to-day run logging goes to `jobsmonitor.log`; launchd's own
@@ -114,35 +122,37 @@ stdout/stderr for the process go to `launchd/stdout.log` and
 `launchd/stderr.log` (catches startup failures before app logging even kicks
 in, e.g. a Python crash on import).
 
-### Troubleshooting: installed but nothing happened
+### Troubleshooting: why a LaunchDaemon, not a LaunchAgent
 
-`RunAtLoad` has occasionally been observed not firing immediately on
-install, even though the plist is correctly configured — a launchd timing
-quirk, not a config problem. Symptom: no email a few minutes after install,
-and `launchctl print` shows it never actually ran:
+This ran as a LaunchAgent (`gui/$(id -u)` domain) originally. On 2026-08-17 a
+scheduled 3-hour run silently never happened: the system log showed launchd
+firing the timer exactly on schedule (`pending spawn, domain in
+on-demand-only mode: com.gilesdavis.jobsmonitor`) but never actually
+dispatching it — no new log lines, no email, nothing — while the Mac stayed
+awake the whole time (no sleep/wake events logged). The GUI (`gui/<uid>`)
+launchd domain can defer a background agent's spawn until it decides the
+login session is genuinely "active" (unlocked/interacted-with), not just
+powered on — a real limitation for a script that's supposed to run
+unattended. `sfltool dumpbtm` confirmed this wasn't a Background Task
+Management permission issue (the item was `[enabled, allowed, notified]`) —
+it was specifically GUI-session-activity gating.
+
+A LaunchDaemon runs in the system domain, which isn't tied to any login
+session at all, so it isn't subject to this gating — the fix is structural,
+not a retry/workaround. If a run is ever missed, force it manually:
 
 ```bash
-launchctl print gui/$(id -u)/com.gilesdavis.jobsmonitor | grep -E "runs|last exit code"
-# runs = 0
-# last exit code = (never exited)
-```
-
-Fix — force it to run right now:
-
-```bash
-launchctl kickstart -p gui/$(id -u)/com.gilesdavis.jobsmonitor
+sudo launchctl kickstart -p system/com.gilesdavis.jobsmonitor
 ```
 
 That run becomes the new baseline for the 3-hour schedule (next automatic
-run is 3 hours after it, not after the original install time), and no
-further manual steps are needed after that — this has only been seen at
-initial install, not on the recurring scheduled runs.
+run is 3 hours after it, not after the original install time).
 
 ### Stop it
 
 ```bash
-launchctl bootout gui/$(id -u)/com.gilesdavis.jobsmonitor
-rm ~/Library/LaunchAgents/com.gilesdavis.jobsmonitor.plist
+sudo launchctl bootout system/com.gilesdavis.jobsmonitor
+sudo rm /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist
 ```
 
 This only stops the schedule — `run.py` still works as a one-off afterwards
