@@ -25,11 +25,11 @@
   config:
     board: dovetail
 
-- name: SafetyCulture
-  homepage: https://safetyculture.com
+- name: Mitti (SafetyCulture)
+  homepage: https://mitti.com
   connector: ashby
   config:
-    board: safetyculture
+    board: mitti
 
 - name: Rokt
   homepage: https://www.rokt.com
