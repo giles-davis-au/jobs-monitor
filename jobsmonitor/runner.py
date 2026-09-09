@@ -9,6 +9,18 @@ from jobsmonitor.store import Store
 logger = logging.getLogger("jobsmonitor")
 
 
+def _try_send_degraded_alert(email_config: EmailConfig, company: str, status: str, error: str | None) -> None:
+    # The alert IS the failure notification — if sending it also fails (e.g.
+    # a transient network blip took out both the original connector call and
+    # this one), that must not crash the whole run and abort every remaining
+    # company. Log it and move on, same "degrade, don't crash" rationale as
+    # the Sheet logger and digest-email catches elsewhere in this function.
+    try:
+        send_degraded_alert(email_config, company, status, error)
+    except Exception as e:  # noqa: BLE001
+        logger.error("%s: failed to send degraded alert: %s", company, e)
+
+
 def run(
     store: Store,
     connectors: list[Connector],
@@ -33,7 +45,7 @@ def run(
         except ConnectorError as e:
             logger.error("%s: connector error: %s", company, e)
             store.record_run(company, status="error", jobs_fetched=None, new_matches=0, error=str(e))
-            send_degraded_alert(email_config, company, "error", str(e))
+            _try_send_degraded_alert(email_config, company, "error", str(e))
             continue
 
         jobs_fetched = len(jobs)
@@ -43,7 +55,7 @@ def run(
             error = f"returned 0 jobs this run; last successful run had {last_ok}"
             logger.warning("%s: %s", company, error)
             store.record_run(company, status="degraded", jobs_fetched=0, new_matches=0, error=error)
-            send_degraded_alert(email_config, company, "degraded", error)
+            _try_send_degraded_alert(email_config, company, "degraded", error)
             continue
 
         matches = find_matches(jobs, keywords)
@@ -55,7 +67,15 @@ def run(
         logger.info("%s: fetched=%d matches=%d new=%d", company, jobs_fetched, len(matches), len(new_matches))
         all_new_matches.extend(new_matches)
 
-    send_digest(email_config, all_new_matches, keywords)
+    try:
+        send_digest(email_config, all_new_matches, keywords)
+    except Exception as e:  # noqa: BLE001
+        # The digest email is the whole point of a run, but a transient
+        # failure to send it (network blip, Resend hiccup) must not crash
+        # the process — that would abort the run before per-company results
+        # are even fully logged, and skip the Sheet append below too. Same
+        # "degrade, don't crash" rationale as the Sheet logger catch below.
+        logger.error("failed to send digest email: %s", e)
 
     if all_new_matches and sheet_logger:
         try:

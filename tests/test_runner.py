@@ -168,6 +168,48 @@ def test_sheet_logger_failure_does_not_crash_the_run_or_block_email(tmp_path):
     store.close()
 
 
+def test_degraded_alert_failure_does_not_crash_the_run(tmp_path):
+    # Reproduces a real incident: a transient network blip broke both the
+    # original connector fetch AND the subsequent attempt to email an alert
+    # about it, which crashed the whole process before any other company was
+    # even attempted (last exit code 1, no digest sent at all).
+    store = Store(tmp_path / "test.db")
+    healthy_job = Job("Healthy Co", "1", "Program Manager", "https://x/1", "Sydney, Australia")
+    connectors = [
+        FakeConnector("Broken Co", error="boom"),
+        FakeConnector("Healthy Co", jobs=[healthy_job]),
+    ]
+
+    with patch("jobsmonitor.runner.send_degraded_alert", side_effect=ConnectionError("network down")), \
+         patch("jobsmonitor.runner.send_digest") as digest:
+        run(store, connectors, keywords=["Program Manager"], email_config=CONFIG)
+
+    # Healthy Co must still have been processed despite the alert-send failure
+    assert store.recent_runs("Healthy Co")[0]["status"] == "ok"
+    digest.assert_called_once()
+    store.close()
+
+
+def test_digest_failure_does_not_crash_the_run_or_skip_sheet_logging(tmp_path):
+    store = Store(tmp_path / "test.db")
+    job = Job("Block", "1", "Program Manager", "https://x/1", "Sydney, Australia")
+    connectors = [FakeConnector("Block", jobs=[job])]
+    sheet_logger = MagicMock()
+
+    with patch("jobsmonitor.runner.send_digest", side_effect=ConnectionError("network down")):
+        run(
+            store,
+            connectors,
+            keywords=["Program Manager"],
+            email_config=CONFIG,
+            sheet_logger=sheet_logger,
+        )
+
+    # Sheet append still happens despite the digest email failing to send
+    sheet_logger.append_matches.assert_called_once()
+    store.close()
+
+
 def test_no_sheet_logger_is_fine(tmp_path):
     store = Store(tmp_path / "test.db")
     job = Job("Block", "1", "Program Manager", "https://x/1", "Sydney, Australia")
