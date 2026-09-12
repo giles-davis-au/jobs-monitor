@@ -14,14 +14,18 @@ from jobsmonitor.connectors.canva import CanvaConnector
 from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
 from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
 from jobsmonitor.connectors.eightfold import EightfoldConnector
+from jobsmonitor.connectors.elmo import ElmoConnector
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
+from jobsmonitor.connectors.intuit import IntuitConnector
 from jobsmonitor.connectors.lever import LeverConnector
+from jobsmonitor.connectors.livehire import LiveHireConnector
 from jobsmonitor.connectors.revolut import RevolutConnector
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
 from jobsmonitor.connectors.tiktok import TikTokConnector
 from jobsmonitor.connectors.uber import UberConnector
 from jobsmonitor.connectors.workable import WorkableConnector
 from jobsmonitor.connectors.workday import WorkdayConnector
+from jobsmonitor.connectors.xero import XeroConnector
 from jobsmonitor.connectors.zip import ZipConnector
 
 CONNECTOR_REGISTRY = {
@@ -45,6 +49,10 @@ CONNECTOR_REGISTRY = {
     "bamboohr": BambooHrConnector,
     "revolut": RevolutConnector,
     "builtin": BuiltInConnector,
+    "elmo": ElmoConnector,
+    "xero": XeroConnector,
+    "livehire": LiveHireConnector,
+    "intuit": IntuitConnector,
 }
 
 

@@ -199,3 +199,46 @@
   config:
     base_url: https://builtinsydney.au
     company_id: "194323"
+
+- name: Shift
+  homepage: https://www.shift.com.au
+  connector: ashby
+  config:
+    board: shift
+
+- name: Eftsure
+  homepage: https://eftsure.com
+  connector: teamtailor
+  config:
+    base_url: https://careers.eftsure.com
+
+- name: Nuix
+  homepage: https://www.nuix.com
+  connector: teamtailor
+  config:
+    base_url: https://careers.nuix.com
+
+- name: Automic Group
+  homepage: https://www.automicgroup.com.au
+  connector: elmo
+  config:
+    elmo_subdomain: automicgroup
+
+- name: Xero
+  homepage: https://www.xero.com
+  connector: xero
+  config: {}
+
+- name: oOh!media
+  homepage: https://oohmedia.com.au
+  connector: livehire
+  config:
+    segment: ooh
+
+- name: Intuit
+  homepage: https://www.intuit.com
+  connector: intuit
+  config:
+    location_slug: sydney-jobs
+    location_path: "2077456-2155400-2147714"
+    location_type: "4"

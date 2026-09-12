@@ -1,0 +1,50 @@
+{
+  "jobs": [
+    {
+      "segmentCode": "ooh",
+      "advertUrlCode": "BM0Q02FYJT",
+      "roleName": "Campaign Delivery Executive",
+      "urlCode": "PBFPY",
+      "seoSlug": "campaign-delivery-executive",
+      "summary": "We are looking for a Campaign Delivery Executive to join our team at oOh!media",
+      "workType": "FullTimePermanent",
+      "flexibleWorkOption": "",
+      "durationDescription": "",
+      "workLocationName": null,
+      "physicalLocation": "Melbourne VIC, Australia",
+      "countryIso": "AU",
+      "countryName": "Australia",
+      "salaryRange": "",
+      "isEoi": false,
+      "strictJobPostEndDates": false,
+      "postedFrom": "2026-09-11T07:32:04.67Z",
+      "postedTo": null,
+      "applicationsCloseAt": null,
+      "internalOnly": false
+    },
+    {
+      "segmentCode": "ooh",
+      "advertUrlCode": "HJHFIKY7DG",
+      "roleName": "Campaign Executive",
+      "urlCode": "C8RCB",
+      "seoSlug": "campaign-executive",
+      "summary": "We are looking for a Campaign Executive to join our team at oOh!media",
+      "workType": "FullTimePermanent",
+      "flexibleWorkOption": "",
+      "durationDescription": "",
+      "workLocationName": null,
+      "physicalLocation": "South Melbourne VIC 3205, Australia",
+      "countryIso": "AU",
+      "countryName": "Australia",
+      "salaryRange": "",
+      "isEoi": false,
+      "strictJobPostEndDates": false,
+      "postedFrom": "2026-09-08T04:34:57.41Z",
+      "postedTo": null,
+      "applicationsCloseAt": null,
+      "internalOnly": false
+    }
+  ],
+  "totalCount": 11,
+  "hasMoreResults": true
+}
