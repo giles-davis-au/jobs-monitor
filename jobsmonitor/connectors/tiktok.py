@@ -21,14 +21,21 @@ class TikTokConnector:
     """TikTok's careers site (lifeattiktok.com) has no usable public API —
     the one "public" endpoint returns a fixed small sample with no working
     pagination or filters. Real search results only appear when the search
-    UI is driven properly: filling the search box and clicking "Search now"
+    UI is driven properly: filling the search box and pressing Enter
     (typing alone, or navigating directly to the resulting URL with
     `offset=N`, does NOT work — confirmed the offset query param is ignored
     on direct navigation and only takes effect when the numbered page
     button is actually clicked). This makes this the most fragile connector
     in the system: it depends on a specific multi-step UI flow rather than
     a single request, and will need attention if TikTok changes their
-    search page's layout, button text, or CSS structure.
+    search page's layout or CSS structure.
+
+    Two UI elements have already changed once since this was first built:
+    the "Search now" button was removed entirely (pressing Enter after
+    filling the search box is what actually triggers a filtered search now),
+    and a new "AI assistant guide" dialog can appear that visually overlaps
+    nothing but still intercepts pointer events, blocking pagination-button
+    clicks until it's dismissed.
     """
 
     def __init__(self, company: str = "TikTok", search_term: str = "Sydney"):
@@ -52,8 +59,18 @@ class TikTokConnector:
                         except PlaywrightTimeoutError:
                             continue
 
+                    # Best-effort dismiss of overlays that intercept pointer
+                    # events on pagination clicks further down — neither
+                    # always appears, so failures here are expected, not errors.
+                    for selector in ('button[aria-label="Close guide"]', "text=Maybe Later"):
+                        try:
+                            page.click(selector, timeout=3000)
+                        except PlaywrightTimeoutError:
+                            continue
+
                     page.fill('input[placeholder="Enter Title, Skill, or City"]', self.search_term)
-                    page.click("text=Search now")
+                    page.wait_for_timeout(500)
+                    page.keyboard.press("Enter")
                     page.wait_for_timeout(2500)
 
                     total = self._parse_total(page)
