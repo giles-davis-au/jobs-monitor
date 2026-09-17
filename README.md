@@ -13,8 +13,7 @@ prioritization, and scope calls throughout (e.g. rejecting a full GCP service
 account for Sheets logging in favour of a small Apps Script, choosing a
 LaunchDaemon over a LaunchAgent after diagnosing a real scheduling bug) and
 reviewed and directed every change — the commit history is a genuine record
-of that process, including real bugs found and fixed along the way, not a
-single polished dump.
+of that process, including real bugs found and fixed along the way.
 
 ## Setup
 
