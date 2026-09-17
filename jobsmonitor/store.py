@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Self
 
 from jobsmonitor.models import Job, LocationConfidence
 
@@ -116,7 +117,7 @@ class Store:
     def close(self) -> None:
         self.conn.close()
 
-    def __enter__(self) -> "Store":
+    def __enter__(self) -> "Self":
         return self
 
     def __exit__(self, *exc: object) -> None:

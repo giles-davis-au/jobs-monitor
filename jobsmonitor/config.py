@@ -11,10 +11,12 @@ from jobsmonitor.connectors.base import Connector
 from jobsmonitor.connectors.breezy import BreezyConnector
 from jobsmonitor.connectors.builtin import BuiltInConnector
 from jobsmonitor.connectors.canva import CanvaConnector
-from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
-from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
 from jobsmonitor.connectors.eightfold import EightfoldConnector
 from jobsmonitor.connectors.elmo import ElmoConnector
+from jobsmonitor.connectors.employmenthero import EmploymentHeroConnector
+from jobsmonitor.connectors.employmenthero_marketplace import (
+    EmploymentHeroMarketplaceConnector,
+)
 from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.intuit import IntuitConnector
 from jobsmonitor.connectors.lever import LeverConnector

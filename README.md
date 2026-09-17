@@ -7,6 +7,15 @@ matching a keyword list.
 See [`docs/PLAN.md`](docs/PLAN.md) for the full design (architecture, per-site
 connector research, testing/observability approach, and implementation phases).
 
+**On the build process**: this was built iteratively with Claude Code as a
+pairing tool, commit by commit, over many sessions. I made the architecture,
+prioritization, and scope calls throughout (e.g. rejecting a full GCP service
+account for Sheets logging in favour of a small Apps Script, choosing a
+LaunchDaemon over a LaunchAgent after diagnosing a real scheduling bug) and
+reviewed and directed every change — the commit history is a genuine record
+of that process, including real bugs found and fixed along the way, not a
+single polished dump.
+
 ## Setup
 
 ```bash
@@ -95,8 +104,13 @@ for your Mac password.
 
 ### Install and run
 
+First, edit `launchd/com.gilesdavis.jobsmonitor.plist` and replace every
+`/path/to/jobs-monitor` placeholder with this project's actual absolute path
+on your machine — launchd requires absolute paths, so `~` and relative paths
+won't work. Then:
+
 ```bash
-cd /Users/gilesdavis/Documents/Davis/coding/projects/jobs-monitor
+cd /path/to/jobs-monitor
 sudo cp launchd/com.gilesdavis.jobsmonitor.plist /Library/LaunchDaemons/
 sudo chown root:wheel /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist
 sudo chmod 644 /Library/LaunchDaemons/com.gilesdavis.jobsmonitor.plist

@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 from jobsmonitor.connectors.base import ConnectorError, http_client
 from jobsmonitor.models import Job
 
-
 MAX_PAGES = 20  # sanity cap
 
 

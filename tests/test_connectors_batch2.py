@@ -2,7 +2,9 @@ import httpx
 import pytest
 
 from jobsmonitor.connectors.base import ConnectorError
-from jobsmonitor.connectors.employmenthero_marketplace import EmploymentHeroMarketplaceConnector
+from jobsmonitor.connectors.employmenthero_marketplace import (
+    EmploymentHeroMarketplaceConnector,
+)
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
 from jobsmonitor.connectors.workday import WorkdayConnector
 from tests.conftest import load_json_fixture, load_text_fixture
