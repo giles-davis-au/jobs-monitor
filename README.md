@@ -7,13 +7,11 @@ matching a keyword list.
 See [`docs/PLAN.md`](docs/PLAN.md) for the full design (architecture, per-site
 connector research, testing/observability approach, and implementation phases).
 
-**On the build process**: this was built iteratively with Claude Code as a
-pairing tool, commit by commit, over many sessions. I made the architecture,
-prioritization, and scope calls throughout (e.g. rejecting a full GCP service
-account for Sheets logging in favour of a small Apps Script, choosing a
-LaunchDaemon over a LaunchAgent after diagnosing a real scheduling bug) and
-reviewed and directed every change — the commit history is a record of that
-process, including real bugs found and fixed along the way.
+The build process: this was built iteratively with Claude Code as a pairing
+tool, commit by commit, over many sessions. I made the architecture,
+prioritization, and scope calls and reviewed and directed the changes. The
+commit history is a record of that process, including real bugs found and
+fixed along the way.
 
 ## Setup
 
