@@ -21,7 +21,10 @@ from jobsmonitor.connectors.greenhouse import GreenhouseConnector
 from jobsmonitor.connectors.intuit import IntuitConnector
 from jobsmonitor.connectors.lever import LeverConnector
 from jobsmonitor.connectors.livehire import LiveHireConnector
+from jobsmonitor.connectors.oraclehcm import OracleHcmConnector
+from jobsmonitor.connectors.payau import PayAuConnector
 from jobsmonitor.connectors.revolut import RevolutConnector
+from jobsmonitor.connectors.rippling import RipplingConnector
 from jobsmonitor.connectors.teamtailor import TeamtailorConnector
 from jobsmonitor.connectors.tiktok import TikTokConnector
 from jobsmonitor.connectors.uber import UberConnector
@@ -55,6 +58,9 @@ CONNECTOR_REGISTRY = {
     "xero": XeroConnector,
     "livehire": LiveHireConnector,
     "intuit": IntuitConnector,
+    "oraclehcm": OracleHcmConnector,
+    "rippling": RipplingConnector,
+    "payau": PayAuConnector,
 }
 
 

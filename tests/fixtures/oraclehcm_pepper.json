@@ -1,0 +1,342 @@
+{
+  "items": [
+    {
+      "SearchId": 1,
+      "Keyword": null,
+      "CorrectedKeyword": null,
+      "UseExactKeywordFlag": false,
+      "SuggestedKeyword": null,
+      "ExecuteSpellCheckFlag": true,
+      "Location": null,
+      "LocationId": null,
+      "Radius": 0,
+      "RadiusUnit": "MI",
+      "SelectedTitlesFacet": null,
+      "SelectedCategoriesFacet": null,
+      "SelectedPostingDatesFacet": null,
+      "SelectedLocationsFacet": null,
+      "LastSelectedFacet": null,
+      "Facets": "TITLES;LOCATIONS;LOCATION_LEVEL1;LOCATION_LEVEL2;LOCATION_LEVEL3;CATEGORIES;POSTING_DATES;WORK_LOCATIONS;FLEX_FIELDS;ORGANIZATIONS;WORKPLACE_TYPES",
+      "Offset": 0,
+      "Limit": 25,
+      "SortBy": "POSTING_DATES_DESC",
+      "TotalJobsCount": 4,
+      "Latitude": null,
+      "Longitude": null,
+      "SiteNumber": "CX_1001",
+      "JobFamilyId": null,
+      "PostingStartDate": null,
+      "PostingEndDate": null,
+      "SelectedWorkLocationsFacet": null,
+      "RequisitionId": null,
+      "CandidateNumber": null,
+      "WorkLocationZipCode": null,
+      "WorkLocationCountryCode": null,
+      "SelectedFlexFieldsFacets": null,
+      "OrganizationId": null,
+      "SelectedOrganizationsFacet": null,
+      "UserTargetFacetName": null,
+      "UserTargetFacetInputTerm": null,
+      "HotJobFlag": null,
+      "WorkplaceType": null,
+      "SelectedWorkplaceTypesFacet": null,
+      "BotQRShortCode": null,
+      "requisitionList": [
+        {
+          "Id": "393",
+          "Title": "Customer Solutions Specialist",
+          "PostedDate": "2026-10-15",
+          "PostingEndDate": null,
+          "Language": "US",
+          "PrimaryLocationCountry": "AU",
+          "GeographyId": 300000001503007,
+          "HotJobFlag": false,
+          "WorkplaceTypeCode": null,
+          "JobFamily": null,
+          "JobFunction": null,
+          "WorkerType": null,
+          "ContractType": null,
+          "ManagerLevel": null,
+          "JobSchedule": null,
+          "JobShift": null,
+          "JobType": null,
+          "StudyLevel": null,
+          "DomesticTravelRequired": null,
+          "InternationalTravelRequired": null,
+          "WorkDurationYears": null,
+          "WorkDurationMonths": null,
+          "WorkHours": null,
+          "WorkDays": null,
+          "LegalEmployer": null,
+          "BusinessUnit": null,
+          "Department": null,
+          "Organization": null,
+          "BusinessUnitId": 300000001485178,
+          "LegalEmployerId": 300000001486611,
+          "OrganizationId": 1,
+          "MediaThumbURL": null,
+          "ShortDescriptionStr": "As a Customer Solutions Specialist - Mortgages, you'll help customers navigate challenging circumstances by providing tailored support and practical solutions. Working within a high-performing team, you'll engage with customers to understand their situation, identify the best path forward and deliver positive outcomes that balance both customer needs and business objectives. This is a permanent opportunity for someone who enjoys problem-solving, building relationships and making a genuine difference.",
+          "PrimaryLocation": "NSW, Australia",
+          "Distance": 1792022400000.0,
+          "TrendingFlag": false,
+          "BeFirstToApplyFlag": true,
+          "Relevancy": 10.0,
+          "WorkplaceType": "",
+          "ExternalQualificationsStr": null,
+          "ExternalResponsibilitiesStr": null,
+          "secondaryLocations": []
+        },
+        {
+          "Id": "468",
+          "Title": "Team Leader - Customer Resolutions",
+          "PostedDate": "2026-10-14",
+          "PostingEndDate": null,
+          "Language": "US",
+          "PrimaryLocationCountry": "AU",
+          "GeographyId": 300000042023008,
+          "HotJobFlag": false,
+          "WorkplaceTypeCode": null,
+          "JobFamily": null,
+          "JobFunction": null,
+          "WorkerType": null,
+          "ContractType": null,
+          "ManagerLevel": null,
+          "JobSchedule": null,
+          "JobShift": null,
+          "JobType": null,
+          "StudyLevel": null,
+          "DomesticTravelRequired": null,
+          "InternationalTravelRequired": null,
+          "WorkDurationYears": null,
+          "WorkDurationMonths": null,
+          "WorkHours": null,
+          "WorkDays": null,
+          "LegalEmployer": null,
+          "BusinessUnit": null,
+          "Department": null,
+          "Organization": null,
+          "BusinessUnitId": 300000001485178,
+          "LegalEmployerId": 300000001486611,
+          "OrganizationId": 1,
+          "MediaThumbURL": null,
+          "ShortDescriptionStr": "As a Team Leader, Customer Resolutions, you'll lead a team responsible for managing customer complaints, disputes and complex customer matters. You'll play a critical role in creating positive customer outcomes while ensuring regulatory obligations, service standards and business objectives are consistently met. This opportunity is ideal for an experienced people leader who thrives in customer-focused environments and enjoys coaching teams through complex and sensitive situations.",
+          "PrimaryLocation": "Parramatta, NSW, Australia",
+          "Distance": 1791936000000.0,
+          "TrendingFlag": false,
+          "BeFirstToApplyFlag": false,
+          "Relevancy": 10.0,
+          "WorkplaceType": "",
+          "ExternalQualificationsStr": null,
+          "ExternalResponsibilitiesStr": null,
+          "secondaryLocations": []
+        },
+        {
+          "Id": "449",
+          "Title": "Team Leader - Customer Service",
+          "PostedDate": "2026-09-14",
+          "PostingEndDate": null,
+          "Language": "US",
+          "PrimaryLocationCountry": "AU",
+          "GeographyId": 300000042023004,
+          "HotJobFlag": false,
+          "WorkplaceTypeCode": null,
+          "JobFamily": null,
+          "JobFunction": null,
+          "WorkerType": null,
+          "ContractType": null,
+          "ManagerLevel": null,
+          "JobSchedule": null,
+          "JobShift": null,
+          "JobType": null,
+          "StudyLevel": null,
+          "DomesticTravelRequired": null,
+          "InternationalTravelRequired": null,
+          "WorkDurationYears": null,
+          "WorkDurationMonths": null,
+          "WorkHours": null,
+          "WorkDays": null,
+          "LegalEmployer": null,
+          "BusinessUnit": null,
+          "Department": null,
+          "Organization": null,
+          "BusinessUnitId": 300000001485178,
+          "LegalEmployerId": 300000001486611,
+          "OrganizationId": 1,
+          "MediaThumbURL": null,
+          "ShortDescriptionStr": "As a Team Leader, Contact Centre, you'll lead a team of Customer Service Specialists to deliver exceptional customer experiences while driving strong operational performance. You'll play a key role in coaching, developing and supporting your team, creating an environment where people can perform at their best while maintaining a strong focus on customer outcomes, quality and compliance.  Please note that this role includes rostered weekend work. Successful candidates must be flexible and available to work some weekend shifts as part of their regular roster.",
+          "PrimaryLocation": "Adelaide, SA, Australia",
+          "Distance": 1789344000000.0,
+          "TrendingFlag": true,
+          "BeFirstToApplyFlag": false,
+          "Relevancy": 3,
+          "WorkplaceType": "",
+          "ExternalQualificationsStr": null,
+          "ExternalResponsibilitiesStr": null,
+          "secondaryLocations": []
+        },
+        {
+          "Id": "438",
+          "Title": "Workforce Planning Analyst",
+          "PostedDate": "2026-09-11",
+          "PostingEndDate": null,
+          "Language": "US",
+          "PrimaryLocationCountry": "AU",
+          "GeographyId": 300000000361214,
+          "HotJobFlag": false,
+          "WorkplaceTypeCode": null,
+          "JobFamily": null,
+          "JobFunction": null,
+          "WorkerType": null,
+          "ContractType": null,
+          "ManagerLevel": null,
+          "JobSchedule": null,
+          "JobShift": null,
+          "JobType": null,
+          "StudyLevel": null,
+          "DomesticTravelRequired": null,
+          "InternationalTravelRequired": null,
+          "WorkDurationYears": null,
+          "WorkDurationMonths": null,
+          "WorkHours": null,
+          "WorkDays": null,
+          "LegalEmployer": null,
+          "BusinessUnit": null,
+          "Department": null,
+          "Organization": null,
+          "BusinessUnitId": 300000001485178,
+          "LegalEmployerId": 300000001486611,
+          "OrganizationId": 1,
+          "MediaThumbURL": null,
+          "ShortDescriptionStr": "The purpose of the Workforce Planning Analyst role is to\u00a0play a critical role in supporting the effective operation of the contact centre. The role is seen as an all-rounder as you will be responsible for delivering accurate forecasting, scheduling, real-time management, and reporting.",
+          "PrimaryLocation": "Australia",
+          "Distance": 1789084800000.0,
+          "TrendingFlag": false,
+          "BeFirstToApplyFlag": false,
+          "Relevancy": 3,
+          "WorkplaceType": "",
+          "ExternalQualificationsStr": null,
+          "ExternalResponsibilitiesStr": null,
+          "secondaryLocations": []
+        }
+      ],
+      "categoriesFacet": [
+        {
+          "Id": 300000001485410,
+          "Name": "Customer Service and Solutions ",
+          "TotalCount": 14
+        },
+        {
+          "Id": 300000001546587,
+          "Name": "Risk and Compliance",
+          "TotalCount": 2
+        },
+        {
+          "Id": 300000001485406,
+          "Name": "Legal",
+          "TotalCount": 1
+        }
+      ],
+      "locationsFacet": [
+        {
+          "Id": 300000000361214,
+          "Name": "Australia",
+          "TotalCount": 17
+        },
+        {
+          "Id": 300000001503007,
+          "Name": "NSW, Australia",
+          "TotalCount": 13
+        },
+        {
+          "Id": 300000042023008,
+          "Name": "Parramatta, NSW, Australia",
+          "TotalCount": 6
+        },
+        {
+          "Id": 300000001503011,
+          "Name": "SA, Australia",
+          "TotalCount": 2
+        },
+        {
+          "Id": 300000042023004,
+          "Name": "Adelaide, SA, Australia",
+          "TotalCount": 2
+        }
+      ],
+      "postingDatesFacet": [
+        {
+          "Id": 7,
+          "Name": "Less than 7 days",
+          "TotalCount": 3
+        },
+        {
+          "Id": 30,
+          "Name": "Less than 30 days",
+          "TotalCount": 7
+        },
+        {
+          "Id": 31,
+          "Name": "Greater than 30 days",
+          "TotalCount": 10
+        }
+      ],
+      "titlesFacet": [],
+      "workLocationsFacet": [
+        {
+          "Id": 300000031789968,
+          "Name": "Parramatta",
+          "TotalCount": 11
+        },
+        {
+          "Id": 300000001484578,
+          "Name": "North Sydney",
+          "TotalCount": 3
+        },
+        {
+          "Id": 300000040415728,
+          "Name": "SA - Adelaide Office",
+          "TotalCount": 2
+        }
+      ],
+      "flexFieldsFacet": [],
+      "organizationsFacet": [
+        {
+          "Id": 1,
+          "Name": "Pepper Group",
+          "TotalCount": 17
+        }
+      ],
+      "workplaceTypesFacet": [
+        {
+          "Id": "ORA_ON_SITE",
+          "Name": "On-site",
+          "TotalCount": 17
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "hasMore": false,
+  "limit": 200,
+  "offset": 0,
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://edss.fa.ap1.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions",
+      "name": "recruitingCEJobRequisitions",
+      "kind": "collection"
+    },
+    {
+      "rel": "action",
+      "href": "https://edss.fa.ap1.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionsLocationCoordinates",
+      "name": "getRequisitionsLocationCoordinates",
+      "kind": "other"
+    },
+    {
+      "rel": "action",
+      "href": "https://edss.fa.ap1.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionDetailsForMap",
+      "name": "getRequisitionDetailsForMap",
+      "kind": "other"
+    }
+  ]
+}

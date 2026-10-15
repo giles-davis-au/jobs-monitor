@@ -242,3 +242,35 @@
     location_slug: sydney-jobs
     location_path: "2077456-2155400-2147714"
     location_type: "4"
+
+- name: Humm Group
+  homepage: https://www.humm-group.com
+  connector: workday
+  config:
+    tenant: flexigroup
+    wd_host: wd105
+    site: Careers
+
+- name: Pepper Money
+  homepage: https://www.pepper.money
+  connector: oraclehcm
+  config:
+    base_url: https://edss.fa.ap1.oraclecloud.com
+    site: CX_1001
+
+- name: Plenti
+  homepage: https://www.plenti.com.au
+  connector: lever
+  config:
+    slug: plenti
+
+- name: Monoova
+  homepage: https://www.monoova.com
+  connector: rippling
+  config:
+    board: monoova-services-pty-ltd
+
+- name: pay.com.au
+  homepage: https://pay.com.au
+  connector: payau
+  config: {}

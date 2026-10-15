@@ -1,0 +1,67 @@
+[
+  {
+    "uuid": "88fbf094-97c6-44a7-a9c3-d594612e05b4",
+    "name": "Account Executive - Payments",
+    "department": {
+      "id": "Commercial",
+      "label": "Commercial"
+    },
+    "url": "https://ats.rippling.com/monoova-services-pty-ltd/jobs/88fbf094-97c6-44a7-a9c3-d594612e05b4",
+    "workLocation": {
+      "label": "Sydney, Australia",
+      "id": "Sydney, Australia"
+    }
+  },
+  {
+    "uuid": "c3eeda5e-78d3-447d-8ef8-6498f22efb65",
+    "name": "Engineering Manager",
+    "department": {
+      "id": "Operations",
+      "label": "Operations"
+    },
+    "url": "https://ats.rippling.com/monoova-services-pty-ltd/jobs/c3eeda5e-78d3-447d-8ef8-6498f22efb65",
+    "workLocation": {
+      "label": "Sydney, Australia",
+      "id": "Sydney, Australia"
+    }
+  },
+  {
+    "uuid": "fd5c12fb-cf1c-4fd8-b375-accbb9c999e4",
+    "name": "Head of Operations",
+    "department": {
+      "id": "Operations",
+      "label": "Operations"
+    },
+    "url": "https://ats.rippling.com/monoova-services-pty-ltd/jobs/fd5c12fb-cf1c-4fd8-b375-accbb9c999e4",
+    "workLocation": {
+      "label": "Sydney, Australia",
+      "id": "Sydney, Australia"
+    }
+  },
+  {
+    "uuid": "8c101c5f-d40d-4f0f-8357-5d2da2997489",
+    "name": "Senior Risk & Compliance Manager (CDD)",
+    "department": {
+      "id": "Risk & Compliance",
+      "label": "Risk & Compliance"
+    },
+    "url": "https://ats.rippling.com/monoova-services-pty-ltd/jobs/8c101c5f-d40d-4f0f-8357-5d2da2997489",
+    "workLocation": {
+      "label": "Sydney, Australia",
+      "id": "Sydney, Australia"
+    }
+  },
+  {
+    "uuid": "186967f3-f419-4ce3-b99d-b4964684c8d0",
+    "name": "Senior Software Engineer",
+    "department": {
+      "id": "Operations",
+      "label": "Operations"
+    },
+    "url": "https://ats.rippling.com/monoova-services-pty-ltd/jobs/186967f3-f419-4ce3-b99d-b4964684c8d0",
+    "workLocation": {
+      "label": "Sydney, Australia",
+      "id": "Sydney, Australia"
+    }
+  }
+]
